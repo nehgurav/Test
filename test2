@@ -1,0 +1,267 @@
+Phase 1
+Analyze the repository and explain the system before making any recommendations.
+
+Generate:
+
+1. High-level architecture diagram
+2. End-to-end request flow
+3. Folder structure explanation
+4. List of all major modules
+5. List of all Claude API integrations
+6. List of all prompts used
+7. List of all JSON schemas
+8. List of all Hugo page generation modules
+9. List of all impact assessment modules
+10. List of all retrieval/search modules
+
+For every module provide:
+
+* Purpose
+* Input
+* Output
+* Dependencies
+
+Do not recommend changes yet.
+
+Only explain the current implementation.
+
+Save as:
+
+CURRENT_ARCHITECTURE.md
+phase 2
+Trace a complete impact assessment execution.
+
+Starting from:
+
+User uploads document
+
+Ending at:
+
+Impact assessment document generation
+
+Show:
+
+1. Every service involved
+2. Every prompt executed
+3. Every Claude API call
+4. Every JSON transformation
+5. Every file generated
+6. Every retrieval step
+7. Every decision point
+
+Create:
+
+IMPACT_ASSESSMENT_TRACE.md
+
+
+
+
+Step 1 ---
+
+Analyze the entire codebase and generate an architecture review.
+
+Context:
+
+This is an AI-powered Impact Assessment Platform built using Node.js and Claude API.
+
+Current functionality:
+
+* Repository scanner generates Hugo pages.
+* Hugo pages contain:
+
+  * Domain
+  * Subdomain
+  * Capability
+  * Service
+  * Repository
+  * API information
+  * Architecture documentation
+  * Functional requirements
+  * Business rules
+  * UI/UX journeys
+  * Test quality metrics
+  * BIAN capability mappings
+
+Impact Assessment Flow:
+
+1. User uploads PPT, DOCX, Markdown or enters text.
+2. LLM extracts requirements.
+3. LLM identifies domains.
+4. LLM identifies subdomains.
+5. LLM identifies capabilities.
+6. LLM identifies impacted services/repositories/APIs.
+7. LLM generates impact assessment.
+8. LLM generates ADRs.
+9. LLM generates Confluence documents.
+10. LLM generates journey diagrams.
+
+Tasks:
+
+1. Generate architecture diagram.
+2. Generate sequence diagram.
+3. Explain folder structure.
+4. Identify all Claude API integrations.
+5. Identify all prompts.
+6. Identify all JSON schemas.
+7. Explain complete processing flow.
+
+Save results into:
+
+ARCHITECTURE_REVIEW.md
+
+
+Step 2
+
+Review the codebase and identify all sources of non-deterministic behavior.
+
+Focus on:
+
+1. Claude prompts
+2. Temperature settings
+3. Top-p settings
+4. Prompt chaining
+5. Context construction
+6. Retrieval logic
+7. JSON parsing
+8. Retry mechanisms
+9. Fallback logic
+
+For each issue provide:
+
+* File
+* Function
+* Problem
+* Why outputs vary
+* Recommendation
+
+Create:
+
+NON_DETERMINISM_REPORT.md
+
+
+Step 3
+
+Analyze the impact assessment implementation.
+
+Determine:
+
+1. How domains are identified.
+2. How subdomains are identified.
+3. How capabilities are identified.
+4. How services are identified.
+5. How repositories are identified.
+6. How APIs are identified.
+
+For every step determine whether the system is:
+
+* Retrieval-based
+* Rule-based
+* LLM-based
+
+Identify places where the LLM is making decisions that should be deterministic.
+
+Flag any prompt that performs multiple responsibilities such as:
+
+* Requirement extraction
+* Capability mapping
+* Impact analysis
+* Document generation
+
+in a single call.
+
+Generate:
+
+IMPACT_ASSESSMENT_REVIEW.md
+
+
+Step 4
+Using the existing codebase, propose a new architecture.
+
+Constraints:
+
+* Node.js
+* Claude API
+* Oracle 19c available
+* No Neo4j currently
+* No dedicated vector database currently
+* 45,000 Hugo pages
+* Existing metadata:
+
+Domain
+→ Subdomain
+→ Capability
+→ Service/Repository/API
+
+Service metadata includes:
+
+* Owned capabilities
+* Used capabilities
+* Relayed capabilities
+* Inferred capabilities
+
+Goals:
+
+1. Deterministic impact assessment.
+2. Consistent outputs.
+3. Explainable decisions.
+4. Reduced hallucinations.
+5. Reusable architecture.
+
+Design:
+
+Stage 1:
+Requirement Extraction Agent
+
+Stage 2:
+Capability Identification Agent
+
+Stage 3:
+Document Retrieval Layer
+
+Stage 4:
+Impact Discovery Engine
+
+Stage 5:
+Documentation Generation Agent
+
+Show:
+
+* Current architecture
+* Proposed architecture
+* Migration strategy
+
+Generate:
+
+TARGET_ARCHITECTURE.md
+
+
+step 5
+
+Review all prompts used in the application.
+
+For each prompt classify it as:
+
+* Requirement Extraction
+* Classification
+* Retrieval
+* Impact Discovery
+* Reasoning
+* Content Generation
+
+A prompt should ideally have only one responsibility.
+
+Identify prompts that perform multiple responsibilities and recommend how to split them.
+
+Generate:
+
+PROMPT_ARCHITECTURE_REVIEW.md
+
+
+
+
+
+
+
+
+
+
