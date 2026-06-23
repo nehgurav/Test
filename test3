@@ -1,0 +1,34 @@
+test-
+Design a Claude Code handoff and memory system for this repository.
+
+Requirements:
+
+* I work on multiple parallel workstreams.
+* I frequently start new Claude Code sessions.
+* I want to preserve important context.
+* I want to minimize token usage.
+
+Create:
+
+1. A /handoff command.
+2. A checkpoint workflow.
+3. Any required workspace memory files.
+4. Optional hooks.
+
+Behavior Requirements:
+
+* Do NOT update memory after every response.
+* Do NOT update memory after minor discussions.
+* Only trigger handoff updates when:
+
+  * a major architecture decision is made
+  * a requirement is finalized
+  * a feature milestone is completed
+  * a workstream changes
+  * the session is ending
+
+Create a mechanism where Claude proactively recommends or executes a handoff when significant context has been created.
+
+The goal is to preserve important decisions without creating excessive noise.
+
+Implement the required files and commands.
