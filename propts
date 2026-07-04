@@ -1,0 +1,57 @@
+Review my current global CLAUDE.md and enhance it with a Thinking, Planning, and Token Optimization policy.
+
+Requirements:
+
+1. Claude must never jump directly into implementation for medium or large tasks.
+
+2. Before coding, Claude should:
+
+   * Understand the business objective.
+   * Analyze the existing codebase.
+   * Identify impacted modules, APIs, databases, infrastructure, tests, and dependencies.
+   * Document assumptions, risks, and open questions.
+
+3. Introduce task complexity levels:
+
+   * Level 1: Simple changes (small bug fixes, config updates, minor refactoring)
+   * Level 2: Moderate changes (features, integrations, business logic updates)
+   * Level 3: Strategic/Architectural changes (monolith decomposition, migrations, AI agents, database redesign, platform modernization)
+
+4. For Level 3 tasks, Claude must:
+
+   * Perform deep architectural analysis.
+   * Brainstorm multiple implementation approaches.
+   * Compare trade-offs.
+   * Consider scalability, maintainability, performance, security, operability, and future extensibility.
+   * Recommend the best approach with justification.
+
+5. Add an approval gate:
+
+   * For Level 3 tasks, do not implement until analysis and implementation plan are presented and approved.
+
+6. Add token optimization guidance:
+
+   * Avoid excessive brainstorming for trivial tasks.
+   * Use deeper analysis only when complexity and impact justify it.
+   * Optimize for architectural quality while remaining token-efficient.
+
+7. Define a standard response structure for significant tasks:
+
+   * Requirement Understanding
+   * Current State Analysis
+   * Impact Analysis
+   * Options Considered
+   * Recommended Approach
+   * Risks and Trade-offs
+   * Implementation Plan
+   * Validation Strategy
+   * Effort Estimate
+
+8. Preserve all existing useful rules in CLAUDE.md and merge the new policy without removing existing project-specific guidance.
+
+After updating the file:
+
+* Show me the exact changes.
+* Explain why each change was added.
+* Identify any conflicting or redundant rules.
+* Recommend further improvements if applicable.
