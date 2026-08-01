@@ -1,0 +1,281 @@
+# Task: Review, Refine and Finalize the Enterprise Knowledge Platform MCP Server Specification (V1)
+
+## Background
+
+The Enterprise Knowledge Platform architecture has already been approved.
+
+Repository Analyzer
+        ↓
+Knowledge Repository (PostgreSQL + pgvector)
+        ↓
+Knowledge Engine
+        ↓
+MCP Server
+        ↓
+AI Workers
+
+The following specifications already exist and should be treated as the source of truth.
+
+- Knowledge Model
+- Database Schema
+- Repository Analyzer
+- Ingestion Pipeline
+- Retrieval & Context Engine
+- Knowledge Engine API
+
+Do NOT redesign these components.
+
+Your task is ONLY to review and finalize the MCP Server specification.
+
+---
+
+# Knowledge Engine Responsibilities
+
+The Knowledge Engine owns all business logic.
+
+Including:
+
+- SQL retrieval
+- Hybrid retrieval
+- Vector retrieval
+- Relationship traversal
+- Ranking
+- Context Builder
+- Evidence collection
+- Knowledge enrichment
+
+The MCP Server must NEVER implement these responsibilities.
+
+The MCP Server is a thin protocol adapter exposing the Knowledge Engine APIs.
+
+---
+
+# AI Workers
+
+The MCP Server will be consumed by:
+
+- Impact Analysis Worker
+- Requirement Analysis Worker
+- OAS Generator
+- Repository Explorer
+- Architecture Assistant
+- Knowledge Explorer
+
+Derive the MCP API from the needs of these workers.
+
+Do NOT derive MCP tools from database tables.
+
+---
+
+# Review the Existing MCP Design
+
+Review the existing MCP specification as a Principal Architect.
+
+For every existing MCP tool determine:
+
+- Should it be kept?
+- Should it be renamed?
+- Can it be merged with another tool?
+- Is it too granular?
+- Is it exposing implementation details?
+- Is it useful for AI Workers?
+- Is it actually a Knowledge Engine responsibility instead?
+
+Produce a review table.
+
+| Tool | Keep | Rename | Merge | Remove | Reason |
+
+---
+
+# Design Principles
+
+The public MCP interface should expose BUSINESS CAPABILITIES instead of DATABASE OPERATIONS.
+
+The primary inputs should always be business concepts such as:
+
+- Requirement text
+- Service name
+- Capability name
+- Domain name
+- Repository name
+- Natural language query
+
+Do NOT require internal database IDs as primary inputs.
+
+Database IDs are implementation details and may only be used for follow-up operations after they have been returned by a previous MCP response.
+
+---
+
+# Design the Final MCP Tool Set
+
+Based on the AI Workers, propose the MINIMUM but COMPLETE set of MCP tools required for V1.
+
+Avoid CRUD APIs.
+
+Avoid duplicate tools.
+
+Prefer task-oriented tools.
+
+For every tool provide:
+
+- Tool Name
+- Purpose
+- AI Workers using it
+- Input
+- Output
+- Knowledge Engine API invoked
+- Validation
+- Error Handling
+- Example Request
+- Example Response
+
+---
+
+# Tool Categories
+
+Group the tools into logical categories.
+
+For example:
+
+- Discovery
+- Search
+- Relationship
+- Context
+
+If you believe another categorization is better, explain why.
+
+---
+
+# Knowledge Engine Mapping
+
+For every MCP Tool, identify exactly which Knowledge Engine API it calls.
+
+Produce a mapping like:
+
+MCP Tool
+
+↓
+
+Knowledge Engine API
+
+↓
+
+Internal Components Used
+
+For example:
+
+build_impact_context
+
+↓
+
+KnowledgeEngine.buildImpactContext()
+
+↓
+
+Hybrid Retrieval
+
+↓
+
+Relationship Traversal
+
+↓
+
+Context Builder
+
+↓
+
+Ranking
+
+↓
+
+Knowledge Context
+
+---
+
+# Validate the Public API
+
+Challenge every tool.
+
+For each tool answer:
+
+- Can another tool already achieve this?
+- Is it a business capability?
+- Is it too generic?
+- Is it too specific?
+- Should it belong inside the Knowledge Engine instead?
+
+The goal is to keep the MCP API small, stable and reusable.
+
+---
+
+# Security
+
+Review and specify:
+
+- Authentication
+- Authorization
+- Input Validation
+- Rate Limiting
+- Logging
+- Auditing
+- Error Handling
+
+Clearly explain which responsibilities belong to:
+
+- MCP Server
+- Knowledge Engine
+- AI Worker
+
+---
+
+# Sequence Diagrams
+
+Generate Mermaid sequence diagrams for:
+
+1. Impact Analysis Worker
+2. Requirement Analysis Worker
+3. Repository Explorer
+4. Architecture Assistant
+
+Show:
+
+AI Worker
+
+↓
+
+MCP Tool
+
+↓
+
+Knowledge Engine
+
+↓
+
+Knowledge Repository
+
+↓
+
+Knowledge Context
+
+↓
+
+AI Worker
+
+---
+
+# Final Deliverables
+
+Produce:
+
+1. Architecture Review
+2. MCP Tool Review Table
+3. Final MCP Tool Set
+4. Tool-to-Worker Matrix
+5. MCP Tool → Knowledge Engine Mapping
+6. Security Responsibilities
+7. Sequence Diagrams
+8. Final Recommendations
+
+This document should become the implementation-ready RFC for the MCP Server.
+
+Do not generate implementation code.
