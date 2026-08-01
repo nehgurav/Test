@@ -1,0 +1,158 @@
+# Task: Design the MCP Server Specification for the Enterprise Knowledge Platform
+
+## Context
+
+We have already completed and approved the following architecture:
+
+- Knowledge Model
+- PostgreSQL + pgvector schema
+- Repository Analyzer
+- Ingestion Pipeline
+- Retrieval & Context Engine
+- Knowledge Engine
+
+Please use these documents as the source of truth.
+
+Do NOT redesign any existing architecture.
+
+---
+
+## Objective
+
+Design the MCP Server specification.
+
+The MCP Server is an integration layer over the Knowledge Engine.
+
+Its responsibility is ONLY to expose the Knowledge Engine capabilities as MCP Tools.
+
+It must never contain:
+
+- SQL
+- Vector Search
+- Business Logic
+- Ranking
+- Context Building
+- Relationship Traversal
+- LLM calls
+
+All of these responsibilities belong to the Knowledge Engine.
+
+---
+
+## Important
+
+Do NOT design MCP tools from database tables.
+
+Do NOT expose CRUD APIs.
+
+Do NOT expose internal database IDs as the primary interface.
+
+The MCP interface must be designed around BUSINESS USE CASES.
+
+---
+
+## AI Workers
+
+The following AI Workers will consume the MCP Server.
+
+1. Impact Analysis Worker
+2. Requirement Analysis Worker
+3. OAS Generator
+4. Repository Explorer
+5. Architecture Assistant
+6. Knowledge Explorer
+
+---
+
+## Your task
+
+For each AI Worker,
+
+identify
+
+- what information it needs
+- what operations it performs
+- what context it requires
+
+Then design the MINIMUM set of MCP tools required to support all workers.
+
+Avoid duplicate tools.
+
+Avoid CRUD tools unless absolutely necessary.
+
+Prefer task-oriented tools.
+
+---
+
+## For every MCP Tool define
+
+- Tool Name
+- Purpose
+- Which AI Workers use it
+- Input
+- Output
+- Knowledge Engine API invoked
+- Validation
+- Error Handling
+- Example Request
+- Example Response
+
+---
+
+## Also define
+
+Tool Categories
+
+Examples:
+
+Discovery
+
+Search
+
+Relationship
+
+Context
+
+Explain why each category exists.
+
+---
+
+## Sequence Diagrams
+
+Generate Mermaid sequence diagrams for
+
+AI Worker
+
+↓
+
+MCP Tool
+
+↓
+
+Knowledge Engine
+
+↓
+
+Knowledge Repository
+
+↓
+
+Knowledge Context
+
+↓
+
+AI Worker
+
+---
+
+## Design Principles
+
+The MCP Server should expose BUSINESS CAPABILITIES instead of DATABASE OPERATIONS.
+
+The MCP Server should be reusable by multiple AI Workers.
+
+The Knowledge Engine should remain the single owner of business logic.
+
+The MCP Server should remain a thin protocol adapter.
+
+Produce an implementation-ready RFC.
