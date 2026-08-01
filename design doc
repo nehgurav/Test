@@ -1,0 +1,444 @@
+# Task: Generate the Enterprise Knowledge Platform - System Architecture Specification (SAS)
+
+## Objective
+
+We have completed the detailed design of the Enterprise Knowledge Platform through multiple approved RFCs.
+
+Your task is NOT to redesign the platform.
+
+Your task is to produce a single end-to-end System Architecture Specification (SAS) that brings together all approved specifications into one cohesive architecture document.
+
+This document should serve as the primary reference for architects, developers and AI engineers.
+
+The detailed RFCs remain the implementation references.
+
+The SAS provides the complete system view.
+
+---
+
+## Existing Approved Specifications
+
+Treat these as the source of truth.
+
+- RFC-001 Knowledge Model
+- RFC-002 Database Schema
+- RFC-003 Repository Analyzer & Ingestion
+- RFC-004 Knowledge Engine
+- RFC-005 MCP Server
+
+Do NOT redesign these.
+
+Do NOT introduce new architecture.
+
+Simply consolidate them into one architecture document.
+
+---
+
+# Deliverables
+
+Generate a professional architecture document with the following sections.
+
+---
+
+# 1. Executive Summary
+
+Explain
+
+- What problem this platform solves
+- Why it exists
+- Business goals
+- Technical goals
+
+---
+
+# 2. Architecture Principles
+
+Explain principles such as
+
+- Deterministic knowledge
+- AI-assisted reasoning
+- Separation of concerns
+- Knowledge-first architecture
+- Thin MCP layer
+- Extensibility
+- Explainability
+
+---
+
+# 3. High-Level Architecture
+
+Generate a Mermaid diagram showing
+
+Repository
+
+↓
+
+Repository Analyzer
+
+↓
+
+Knowledge Repository
+
+(PostgreSQL + pgvector)
+
+↓
+
+Knowledge Engine
+
+↓
+
+MCP Server
+
+↓
+
+AI Workers
+
+↓
+
+End Users
+
+Explain every component.
+
+---
+
+# 4. System Components
+
+Describe
+
+Repository Analyzer
+
+Knowledge Repository
+
+Knowledge Engine
+
+MCP Server
+
+AI Workers
+
+Future Integrations
+
+For every component provide
+
+Responsibilities
+
+Inputs
+
+Outputs
+
+Dependencies
+
+---
+
+# 5. Knowledge Model
+
+Summarize the enterprise knowledge model.
+
+Explain
+
+Domain
+
+↓
+
+Subdomain
+
+↓
+
+Capability
+
+↓
+
+Service
+
+↓
+
+Business Rules
+
+Requirements
+
+Dependencies
+
+Consumers
+
+Document Chunks
+
+Reference the detailed RFC instead of repeating every table.
+
+---
+
+# 6. Data Flow
+
+Describe the complete lifecycle.
+
+Repository
+
+↓
+
+Repository Analysis
+
+↓
+
+Knowledge Extraction
+
+↓
+
+Embeddings
+
+↓
+
+Knowledge Repository
+
+↓
+
+Knowledge Engine
+
+↓
+
+MCP
+
+↓
+
+AI Worker
+
+↓
+
+Response
+
+Generate Mermaid diagrams.
+
+---
+
+# 7. Repository Analysis Pipeline
+
+Summarize
+
+Repository scanning
+
+Knowledge extraction
+
+Business rule extraction
+
+Capability mapping
+
+Embedding generation
+
+Knowledge persistence
+
+Reference the detailed ingestion RFC.
+
+---
+
+# 8. Knowledge Repository
+
+Explain
+
+PostgreSQL
+
+pgvector
+
+Embeddings
+
+Relationships
+
+Indexes
+
+Reference the schema RFC.
+
+---
+
+# 9. Knowledge Engine
+
+Describe
+
+Responsibilities
+
+Retrieval
+
+Hybrid Search
+
+Relationship Traversal
+
+Ranking
+
+Evidence Collection
+
+Context Builder
+
+Knowledge APIs
+
+Reference RFC-004.
+
+---
+
+# 10. MCP Server
+
+Explain
+
+Responsibilities
+
+Authentication
+
+Authorization
+
+Validation
+
+Logging
+
+Rate Limiting
+
+Tool Categories
+
+Reference RFC-005.
+
+---
+
+# 11. AI Workers
+
+Describe
+
+Impact Analysis Worker
+
+Requirement Analysis Worker
+
+Repository Explorer
+
+Architecture Assistant
+
+Knowledge Explorer
+
+OAS Generator
+
+Explain how every worker interacts with MCP.
+
+Generate sequence diagrams.
+
+---
+
+# 12. End-to-End Request Flow
+
+Generate sequence diagrams for
+
+Impact Analysis
+
+Repository Explorer
+
+Knowledge Search
+
+Architecture Analysis
+
+Requirement Analysis
+
+---
+
+# 13. Security Architecture
+
+Authentication
+
+Authorization
+
+Audit
+
+Logging
+
+Secrets
+
+Future OAuth integration
+
+---
+
+# 14. Non-Functional Requirements
+
+Performance
+
+Scalability
+
+Availability
+
+Caching
+
+Observability
+
+Extensibility
+
+---
+
+# 15. Deployment Architecture
+
+Generate deployment diagrams.
+
+Node.js services
+
+PostgreSQL
+
+pgvector
+
+MCP Server
+
+AI Workers
+
+Future Kubernetes deployment
+
+---
+
+# 16. Future Roadmap
+
+Graph Database
+
+Confluence
+
+Jira
+
+Knowledge Graph
+
+Additional AI Workers
+
+Cell-based Architecture
+
+Multi-modal Knowledge
+
+---
+
+# 17. Design Decisions
+
+Summarize the important architectural decisions.
+
+Examples
+
+Why PostgreSQL + pgvector
+
+Why deterministic Knowledge Engine
+
+Why MCP
+
+Why AI Workers
+
+Why Repository Analysis
+
+Why Hybrid Retrieval
+
+---
+
+# 18. Appendices
+
+List all RFCs.
+
+Reference them instead of duplicating implementation details.
+
+---
+
+# Important Constraints
+
+This document is NOT another RFC.
+
+This is the master architecture document.
+
+Avoid repeating implementation details already captured in RFCs.
+
+Instead
+
+- summarize
+- explain
+- reference
+
+The goal is to give readers a complete end-to-end understanding of the Enterprise Knowledge Platform without replacing the detailed RFCs.
+
+Use professional architecture language suitable for an enterprise design document.
