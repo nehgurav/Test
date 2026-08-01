@@ -1,0 +1,213 @@
+# RFC-004 - Knowledge Engine API Specification (V1)
+
+## Background
+
+We have completed the following architecture:
+
+- Canonical Knowledge Model
+- PostgreSQL + pgvector schema
+- Repository Analyzer
+- Ingestion Pipeline
+- Retrieval & Context Engine
+
+Do NOT redesign any existing architecture.
+
+The purpose of this RFC is to define the public API exposed by the Knowledge Engine.
+
+The Knowledge Engine is a deterministic component.
+
+It does NOT call an LLM.
+
+It is responsible for:
+
+- SQL retrieval
+- Vector retrieval
+- Hybrid retrieval
+- Relationship traversal
+- Context enrichment
+- Ranking
+- Context assembly
+
+It returns structured Knowledge Context objects.
+
+The AI Worker performs reasoning.
+
+---
+
+## Deliverables
+
+### 1. Design Principles
+
+Explain the responsibilities of the Knowledge Engine.
+
+Explain what must NOT belong inside the Knowledge Engine.
+
+---
+
+### 2. API Categories
+
+Design APIs grouped by category.
+
+For example:
+
+Entity Retrieval
+
+Relationship Retrieval
+
+Semantic Search
+
+Context Building
+
+Impact Analysis
+
+Architecture Analysis
+
+Knowledge Discovery
+
+---
+
+### 3. API Specification
+
+For every API provide:
+
+- Name
+- Purpose
+- Input
+- Output
+- SQL tables used
+- Vector search collections used
+- Retrieval strategy
+- Ranking strategy
+- Example request
+- Example response
+
+For example:
+
+buildImpactContext()
+
+buildRequirementContext()
+
+buildServiceContext()
+
+buildCapabilityContext()
+
+searchBusinessRules()
+
+searchRequirements()
+
+searchServices()
+
+findDependencies()
+
+findConsumers()
+
+findBusinessRules()
+
+findRequirements()
+
+searchKnowledge()
+
+Explain whether each API uses:
+
+- SQL
+- Vector
+- Hybrid
+
+---
+
+### 4. Knowledge Context Objects
+
+Design all context objects.
+
+Examples:
+
+ImpactContext
+
+ServiceContext
+
+CapabilityContext
+
+RequirementContext
+
+ArchitectureContext
+
+DocumentContext
+
+For every object define:
+
+- Fields
+- Relationships
+- Why those fields exist
+
+---
+
+### 5. Internal Processing Pipeline
+
+For every API explain the internal flow.
+
+Example:
+
+Query
+
+↓
+
+Query Classification
+
+↓
+
+Retrieval Strategy
+
+↓
+
+SQL
+
+↓
+
+Vector Search
+
+↓
+
+Merge
+
+↓
+
+Relationship Traversal
+
+↓
+
+Ranking
+
+↓
+
+Context Builder
+
+↓
+
+Knowledge Context
+
+---
+
+### 6. Sequence Diagrams
+
+Generate Mermaid sequence diagrams.
+
+---
+
+### 7. Extension Points
+
+Document where future versions may introduce:
+
+- Graph Database
+- Query Planner
+- Context Compression
+- Additional Knowledge Sources
+
+Do not redesign V1.
+
+Mention these only as extension points.
+
+---
+
+Do NOT generate Node.js code.
+
+Produce only architecture documentation.
