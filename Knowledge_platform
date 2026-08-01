@@ -1,0 +1,201 @@
+We have completed the V1 Knowledge Model.
+
+Do NOT redesign the schema.
+
+Do NOT redesign the ingestion pipeline.
+
+The next objective is to design the Retrieval and Context Engine for V1.
+
+Context
+
+The platform consists of:
+
+Repository Analyzer
+↓
+
+Knowledge Platform
+↓
+
+MCP Server
+↓
+
+AI Workers
+
+The Repository Analyzer already persists knowledge into PostgreSQL + pgvector.
+
+The MCP Server is only a protocol adapter.
+
+The Knowledge Platform is responsible for retrieval, enrichment and context building.
+
+---
+
+Your task is NOT to implement code.
+
+Produce an architecture specification.
+
+The document should answer:
+
+## 1. Query Classification
+
+Classify incoming queries into categories such as:
+
+- Entity Lookup
+- Semantic Discovery
+- Relationship Query
+- Explanation Query
+- Impact Analysis
+
+Explain the retrieval strategy for each.
+
+---
+
+## 2. Retrieval Strategy
+
+For every query type identify:
+
+- SQL
+- Vector Search
+- Hybrid Search
+
+Explain why.
+
+---
+
+## 3. Context Builder
+
+Design a Context Builder component.
+
+Its responsibility is to enrich retrieved knowledge.
+
+For example:
+
+Business Rule
+
+↓
+
+Service
+
+↓
+
+Capability
+
+↓
+
+Dependencies
+
+↓
+
+Requirements
+
+↓
+
+Relevant Document Chunks
+
+↓
+
+Context Object
+
+Explain how context should be assembled.
+
+---
+
+## 4. Knowledge Context Objects
+
+Define context objects instead of raw search results.
+
+Examples:
+
+ImpactContext
+
+RequirementContext
+
+ServiceContext
+
+CapabilityContext
+
+ArchitectureContext
+
+Each should describe:
+
+- Purpose
+- Included entities
+- Relationships
+- Intended AI consumer
+
+---
+
+## 5. Knowledge Platform API
+
+Design logical APIs only.
+
+No implementation.
+
+Example:
+
+buildImpactContext()
+
+buildServiceContext()
+
+buildRequirementContext()
+
+buildCapabilityContext()
+
+searchBusinessRules()
+
+findServices()
+
+Do not define REST endpoints.
+
+Do not define MCP tools.
+
+---
+
+## 6. MCP Responsibilities
+
+Clearly define:
+
+What belongs inside MCP.
+
+What belongs inside the Knowledge Platform.
+
+What belongs inside AI Workers.
+
+---
+
+## 7. Sequence Diagrams
+
+Generate Mermaid sequence diagrams for:
+
+AI Worker
+
+↓
+
+MCP
+
+↓
+
+Knowledge Platform
+
+↓
+
+SQL
+
+↓
+
+Vector Search
+
+↓
+
+Context Builder
+
+↓
+
+Response
+
+---
+
+Do not generate Node.js code.
+
+Do not generate TypeScript.
+
+Produce architecture documentation only.
