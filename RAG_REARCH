@@ -1,0 +1,117 @@
+I want you to act as a senior AI platform architect and brainstorm on the EXISTING codebase before making any changes.
+
+Do NOT modify any files yet.
+
+First, inspect the repository selectively and understand the current implementation of our Knowledge Platform / RAG chatbot.
+
+Our current architecture and intent are roughly:
+
+User → Chat UI → Python Agent → MCP → Knowledge Engine API → PostgreSQL + pgvector
+
+Existing MCP business tools include:
+
+* discover
+* search
+* trace
+* assess
+
+The Knowledge Engine API currently accepts natural-language queries and performs embedding/retrieval/query execution.
+
+The knowledge base contains multiple document types, including Hugo/Markdown documentation, OpenAPI/API specifications, JSON mappings and other technical metadata.
+
+The platform is intended for multiple personas:
+
+* Product Owners
+* Solution Architects
+* Developers
+* Production Support
+
+The target experience is not just a chatbot. We want conversational responses that can also present useful visualizations such as:
+
+* capability/domain hierarchy
+* architecture/component diagrams
+* upstream/downstream dependency graphs
+* API/sequence flows
+* UI wireframes where appropriate
+* source/evidence panels
+* downloadable Markdown/PDF/document artifacts
+
+We are also considering LangGraph as the agent/workflow harness.
+
+Your task is ONLY to brainstorm and create an implementation plan.
+
+Please do the following:
+
+1. Map the existing architecture
+
+   * Identify the current Python agent
+   * MCP server and current tools
+   * Knowledge Engine / FastAPI endpoints
+   * RAG / embedding implementation
+   * PostgreSQL + pgvector usage
+   * chatbot/frontend implementation
+   * conversation history implementation, if any
+
+2. Trace one existing user request end-to-end through the current code.
+   Show the actual files/classes/functions involved.
+
+3. Explain what is already good and should NOT be changed.
+
+4. Identify gaps between the current implementation and the target Knowledge Platform described above.
+
+5. Specifically evaluate:
+
+   * whether LangGraph should be introduced
+   * where LangGraph should sit
+   * whether existing MCP tools should remain
+   * whether MCP tools need changes
+   * how visualizations should be generated from discover/search/trace/assess results
+   * whether visualization should be a new MCP tool or a presentation-layer capability
+   * how Hugo/OpenAPI/JSON knowledge should be represented for retrieval and visualization
+   * how conversation history should work
+   * how generated Markdown artifacts should be created and passed to specialist agents
+
+6. Do NOT redesign the system from scratch.
+   Prefer incremental changes to the existing codebase.
+
+7. Identify architectural decisions that are still unresolved and give 2–3 options for each, with pros/cons and your recommendation.
+
+8. Produce a phased implementation plan:
+   Phase 0: current-state analysis
+   Phase 1: ...
+   Phase 2: ...
+   Phase 3: ...
+
+9. For each phase provide:
+
+   * goal
+   * files/modules likely to change
+   * new components
+   * API/MCP changes
+   * risks
+   * dependencies
+   * acceptance criteria
+
+10. Explicitly identify what should NOT be implemented yet.
+
+11. At the end, produce:
+    A. Current architecture diagram
+    B. Proposed architecture diagram
+    C. Component/file impact matrix
+    D. Ordered implementation backlog
+    E. Top 5 architectural decisions I need to make before coding
+
+Important constraints:
+
+* Do not make code changes.
+* Do not create files unless I explicitly ask you to.
+* Do not read the entire repository indiscriminately.
+* Start by identifying relevant directories/files, then inspect only what is needed.
+* Reuse the existing architecture wherever possible.
+* Do not introduce LangGraph, Spring AI, additional MCP tools, or additional microservices merely because they are available. Justify every proposed addition.
+* Treat PostgreSQL + pgvector as the current knowledge store.
+* Treat discover/search/trace/assess as existing business-level MCP abstractions unless you find a concrete reason to change them.
+
+At the end, give me a concise recommendation for the target architecture and the smallest sensible next implementation step.
+
+Do not implement anything until I approve the plan.
