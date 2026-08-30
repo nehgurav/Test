@@ -1,0 +1,178 @@
+I want to introduce LangGraph into the EXISTING Python agent implementation.
+
+Do not rewrite the application from scratch and do not modify the Knowledge Engine retrieval implementation unless there is a concrete reason.
+
+First inspect the existing code and understand how the current agent works.
+
+Current intended architecture:
+
+React/Browser Chat UI
+↓
+Python Agent
+↓
+MCP Server
+↓
+Knowledge Engine API
+↓
+PostgreSQL + pgvector
+
+Existing MCP business tools:
+
+* discover
+* search
+* trace
+* assess
+
+The Knowledge Engine currently accepts natural-language queries and performs the required embedding/retrieval/database operations.
+
+Knowledge sources include:
+
+* Hugo/Markdown documentation
+* OpenAPI/API specifications
+* JSON mappings
+* technical metadata
+
+Target architecture:
+
+Chat UI
+↓
+LangGraph Agent / Harness
+↓
+MCP
+↓
+Knowledge Engine
+↓
+PostgreSQL + pgvector
+
+The goal of introducing LangGraph is to provide:
+
+* explicit workflow/state management
+* tool orchestration
+* branching
+* multi-step knowledge workflows
+* future support for visualization and document-generation workflows
+* persistent conversation state where appropriate
+
+Important architectural constraints:
+
+1. LangGraph should be the orchestration/harness layer.
+2. MCP remains the tool interface.
+3. Keep discover/search/trace/assess as the existing business-level MCP tools.
+4. Do not move PostgreSQL, pgvector, embeddings, or retrieval logic into LangGraph.
+5. Do not duplicate the Knowledge Engine inside LangGraph.
+6. Do not introduce new microservices unless clearly justified.
+7. Do not add visualization MCP tools yet unless the existing architecture demonstrates a real need.
+8. Visualization should be derived from structured results returned by discover/search/trace/assess.
+9. Preserve the existing chatbot behavior while introducing LangGraph incrementally.
+10. Avoid unnecessary dependencies and abstractions.
+
+What I want from you:
+
+PHASE 1 — Understand current implementation
+
+* Identify the current Python agent entry point.
+* Identify Claude/LLM integration.
+* Identify MCP client integration.
+* Identify how conversation history/state is currently managed.
+* Identify where tool calls are executed.
+* Trace one complete request through the existing code.
+
+PHASE 2 — Propose LangGraph design
+Design a LangGraph state model for the existing application.
+
+Show:
+
+* State object
+* Graph nodes
+* Edges
+* Conditional routing
+* MCP tool execution
+* Conversation state
+* Final response generation
+
+Start with the smallest useful graph.
+
+For example, evaluate whether the initial graph should conceptually be:
+
+START
+↓
+Agent/Router
+↓
+Tool Call
+↓
+MCP
+↓
+Knowledge result
+↓
+Agent
+↓
+Response
+↓
+END
+
+Do not assume this exact graph is correct; validate it against the existing implementation.
+
+PHASE 3 — Map existing code to LangGraph
+
+Create a mapping like:
+
+Current component → LangGraph component
+
+Examples:
+
+* current agent loop → LangGraph graph
+* current conversation state → Graph state
+* current MCP invocation → tool node
+* current Claude call → model node
+* current response handling → response node
+
+Identify which existing code can be reused unchanged.
+
+PHASE 4 — Design for future workflows
+
+Show how the graph could later support:
+
+A. Normal knowledge question
+B. Discover + trace
+C. Impact assessment
+D. Knowledge retrieval + visualization
+E. Knowledge retrieval + Markdown artifact generation
+
+Do not implement these future workflows yet.
+Only show how the graph architecture would accommodate them.
+
+PHASE 5 — Implementation plan
+
+Provide:
+
+* files to add
+* files to modify
+* files to leave unchanged
+* dependencies to add
+* migration sequence
+* risks
+* tests
+* acceptance criteria
+
+The first implementation should be the minimum change required to put the existing chatbot behind LangGraph.
+
+IMPORTANT:
+
+* Do not modify code yet.
+* Do not create files yet.
+* Do not introduce LangChain unless it is specifically required by the existing implementation.
+* Do not replace MCP with another tool mechanism.
+* Do not change the existing retrieval behavior.
+* Do not redesign the UI yet.
+* Do not implement visualization yet.
+
+At the end, give me:
+
+1. Current architecture
+2. Proposed LangGraph architecture
+3. Graph/state design
+4. Code impact map
+5. Ordered implementation plan
+6. Recommendation for the smallest first change
+
+Wait for my approval before implementing.
