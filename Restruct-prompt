@@ -1,0 +1,29 @@
+Review this documentation generation project before making any code changes.
+
+Your task is to audit the current implementation and identify how it can be improved.
+
+Specifically:
+
+1. Explain the current architecture and documentation generation pipeline.
+2. Identify what information is extracted from the codebase and what is missing.
+3. Verify whether dependency resolution works for:
+    * Internal shared libraries.
+    * Maven/Gradle dependencies.
+    * Classes imported from other repositories.
+4. Check whether cross-repository tracing is implemented or whether documentation is limited to a single repository.
+5. Evaluate how UI projects are handled:
+    * Can the tool understand React/Angular component hierarchy?
+    * Can it infer screen layouts?
+    * If not, explain why.
+6. Identify places where the LLM may hallucinate because required context is missing.
+7. Propose an improvement plan, ordered by priority and implementation effort.
+
+Do not modify any code yet.
+
+Return your findings in this format:
+
+* Current behavior.
+* Missing capabilities.
+* Root cause.
+* Recommended solution.
+* Files/modules that need to change.
