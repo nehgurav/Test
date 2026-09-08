@@ -1,0 +1,210 @@
+# Knowledge Hub V2 Architecture Review (PostgreSQL Only)
+
+Act as a Principal Engineer reviewing an enterprise Knowledge Hub platform. Do NOT implement Neo4j yet.
+
+Your goal is to improve retrieval quality, grounding quality, business understanding, and architecture readiness while keeping PostgreSQL + pgvector as the only database.
+
+## Background
+
+This platform contains:
+
+* Hugo Markdown documents as the source of truth.
+* FastAPI Knowledge Engine.
+* PostgreSQL + pgvector.
+* MPNet embeddings.
+* MCP server exposing tools for discovery/search/trace/document generation.
+* Harness integration.
+* Intent classification layer for PO, Developer, Architect and Production Support queries.
+
+Neo4j is planned later after architecture approval.
+
+---
+
+## Review Scope
+
+Review the entire codebase and database schema. Produce recommendations before changing code.
+
+### 1. Review PostgreSQL schema
+
+Inspect tables including:
+
+* catalogue_domain
+* catalogue_subdomain
+* catalogue_capability
+* service
+* service_business_capability
+* journey_register
+* journey_variant
+* business_rule
+* requirement
+* doc_chunk
+* any embedding tables.
+
+For each table:
+
+* Explain whether schema is sufficient for high-quality RAG.
+* Recommend additional columns.
+* Recommend indexes.
+* Recommend metadata improvements.
+* Recommend tables that should remain PostgreSQL-only when Neo4j is introduced later.
+
+Do NOT generate destructive migrations.
+
+---
+
+### 2. Review Hugo ingestion pipeline
+
+Inspect ingestion flow.
+
+Determine:
+
+* Which front matter fields are parsed.
+* Which metadata is ignored.
+* Whether chunking is semantic or size-based.
+* Whether parent-child chunk relationships exist.
+* Whether document versioning exists.
+* Whether tags and keywords are generated.
+
+Recommend improvements for retrieval quality.
+
+---
+
+### 3. Review Embedding Strategy
+
+Inspect MPNet embedding generation.
+
+Answer:
+
+* What text is embedded for each asset?
+* Is description enough?
+* Should business summary and technical summary be embedded separately?
+* Which tables need embeddings?
+* Which tables should never contain embeddings?
+
+Recommend incremental embedding strategy for taxonomy changes.
+
+---
+
+### 4. Review Retrieval Pipeline
+
+Inspect Knowledge Engine search flow.
+
+Review:
+
+* Intent detection.
+* Metadata filtering.
+* Hybrid search possibilities (pgvector + PostgreSQL full text search).
+* Chunk ranking.
+* Reranking support.
+* Citation generation.
+* Context assembly before LLM.
+
+Recommend changes to improve answer quality for business users.
+
+---
+
+### 5. Review Intent Classification
+
+Inspect intent router.
+
+Evaluate support for personas:
+
+* Product Owner / Business Analyst
+* Architect
+* Backend Developer
+* UI Developer
+* Production Support
+* Tester
+
+Recommend:
+
+* intent taxonomy,
+* routing rules,
+* confidence thresholds,
+* fallback strategy.
+
+---
+
+### 6. Review Harness Integration
+
+Inspect Harness-related ingestion.
+
+Answer:
+
+* Which Harness entities are indexed?
+* Are pipelines, services, environments, templates, delegates, connectors searchable?
+* How should Harness metadata be stored?
+* How should Harness resources map to existing capabilities/services?
+
+Recommend ingestion improvements only.
+
+---
+
+### 7. Review MCP Tool Contracts
+
+Inspect all MCP tools.
+
+For each tool:
+
+* Purpose.
+* Input schema.
+* Output schema.
+* Whether tool is too generic or too specific.
+* Whether tool should call Knowledge Engine APIs instead of database logic.
+
+Recommend simplified MCP contracts.
+
+---
+
+### 8. Review Hallucination Prevention
+
+Inspect prompt construction.
+
+Recommend:
+
+* grounding strategy,
+* business vs technical context separation,
+* citation enforcement,
+* confidence scoring,
+* missing-context handling.
+
+Focus on reducing hallucinations without Neo4j.
+
+---
+
+### 9. Produce Retrieval Quality Scorecard
+
+Score each area from 1–10.
+
+| Area                     | Score | Recommendation |
+| ------------------------ | ----- | -------------- |
+| Schema                   |       |                |
+| Metadata                 |       |                |
+| Chunking                 |       |                |
+| Embeddings               |       |                |
+| Retrieval                |       |                |
+| Intent                   |       |                |
+| MCP                      |       |                |
+| Harness                  |       |                |
+| Hallucination Prevention |       |                |
+
+---
+
+## Deliverables
+
+Generate a folder `docs/architecture-review-v2/` containing:
+
+1. Schema review.
+2. Retrieval pipeline review.
+3. Intent architecture review.
+4. Harness ingestion review.
+5. MCP architecture review.
+6. SQL migration recommendations.
+7. Mermaid diagrams for ingestion and retrieval.
+8. Prioritized implementation roadmap (Phase 1, Phase 2, Phase 3).
+
+Important constraints:
+
+* PostgreSQL remains the source of truth.
+* Neo4j is NOT implemented in this review.
+* Do not modify production code until review artifacts are generated.
