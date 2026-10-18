@@ -23,14 +23,18 @@
         },
         {
           "condition": "no customers match",
-          "targetScreenId": "SCR-001",
-          "targetState": "No customers found status message displayed",
+          "targetScreenId": "SCR-005",
+          "targetState": "No-results status displayed on /customers; search form remains available",
           "transitionType": "state-change",
           "evidenceStatus": "source-confirmed"
         }
       ],
       "evidenceStatus": "source-confirmed",
-      "notes": "Client-side filtering only; no network request is made."
+      "notes": "Client-side filtering only; no network request is made. ACT-001 is available in both SCR-001 and SCR-005 because the search form remains visible in the empty state.",
+      "screenIds": [
+        "SCR-001",
+        "SCR-005"
+      ]
     },
     {
       "id": "ACT-002",
@@ -164,7 +168,16 @@
         }
       ],
       "evidenceStatus": "source-confirmed",
-      "notes": "The same link is rendered in both detail branches."
+      "notes": "The same link is rendered in both the successful detail and not-found branches. screenIds records both starting states; screenId remains the primary/legacy state.",
+      "screenIds": [
+        "SCR-002",
+        "SCR-003"
+      ]
     }
+  ],
+  "notes": [
+    "screenIds is an additive extension used when the same control appears in more than one starting screen/state; screenId remains the primary ID for compatibility.",
+    "SCR-005 represents the no-results state on /customers; it is not a new route.",
+    "apiRefs is empty throughout this sample because the source uses an in-memory mock service and no backend API."
   ]
 }
