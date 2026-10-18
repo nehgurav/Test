@@ -101,6 +101,13 @@
           "evidenceStatus": "source-confirmed"
         },
         {
+          "condition": "required name is empty or email format is invalid",
+          "targetScreenId": "SCR-002",
+          "targetState": "edit form remains visible and browser-native form validation blocks submission",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        },
+        {
           "condition": "customer ID is missing from the in-memory store at submit time",
           "targetScreenId": "SCR-002",
           "targetState": "edit form remains visible with an update-failure status message",
