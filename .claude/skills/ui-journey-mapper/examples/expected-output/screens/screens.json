@@ -15,17 +15,29 @@
       "routePattern": "/customers",
       "purpose": "Search customers by name or email and open a customer record.",
       "layout": "main",
-      "entryPoints": ["/"],
+      "entryPoints": [
+        "/"
+      ],
       "screenshot": null,
-      "layoutAsset": null,
+      "layoutAsset": "screens/layouts/SCR-001.svg",
       "runtimeStatus": "not-visited",
       "evidenceStatus": "source-confirmed",
       "sourceRefs": [
-        { "file": "src/App.jsx", "lines": "1-13" },
-        { "file": "src/pages/CustomerSearch.jsx", "lines": "1-54" }
+        {
+          "file": "src/App.jsx",
+          "lines": "1-13"
+        },
+        {
+          "file": "src/pages/CustomerSearch.jsx",
+          "lines": "1-54"
+        }
       ],
       "graphRefs": [],
-      "controlIds": ["ACT-001", "ACT-002"]
+      "controlIds": [
+        "ACT-001",
+        "ACT-002"
+      ],
+      "layoutStatus": "source-reconstructed"
     },
     {
       "id": "SCR-002",
@@ -34,17 +46,32 @@
       "routePattern": "/customers/:customerId",
       "purpose": "View a customer, edit name/email in local demo state, or return to search.",
       "layout": "main",
-      "entryPoints": ["SCR-001 customer-result link", "direct route"],
+      "entryPoints": [
+        "SCR-001 customer-result link",
+        "direct route"
+      ],
       "screenshot": null,
-      "layoutAsset": null,
+      "layoutAsset": "screens/layouts/SCR-002.svg",
       "runtimeStatus": "not-visited",
       "evidenceStatus": "source-confirmed",
       "sourceRefs": [
-        { "file": "src/App.jsx", "lines": "1-13" },
-        { "file": "src/pages/CustomerDetail.jsx", "lines": "1-84" }
+        {
+          "file": "src/App.jsx",
+          "lines": "1-13"
+        },
+        {
+          "file": "src/pages/CustomerDetail.jsx",
+          "lines": "1-84"
+        }
       ],
       "graphRefs": [],
-      "controlIds": ["ACT-003", "ACT-004", "ACT-005", "ACT-006"]
+      "controlIds": [
+        "ACT-003",
+        "ACT-004",
+        "ACT-005",
+        "ACT-006"
+      ],
+      "layoutStatus": "source-reconstructed"
     },
     {
       "id": "SCR-003",
@@ -53,22 +80,62 @@
       "routePattern": "/customers/:customerId",
       "purpose": "Show a not-found message for an unknown customer ID and offer a return link.",
       "layout": "main",
-      "entryPoints": ["SCR-002 lookup returns null"],
+      "entryPoints": [
+        "SCR-002 lookup returns null"
+      ],
       "screenshot": null,
-      "layoutAsset": null,
+      "layoutAsset": "screens/layouts/SCR-003.svg",
       "runtimeStatus": "not-visited",
       "evidenceStatus": "source-confirmed",
       "sourceRefs": [
-        { "file": "src/pages/CustomerDetail.jsx", "lines": "17-24" },
-        { "file": "src/services/customers.js", "lines": "11-14" }
+        {
+          "file": "src/pages/CustomerDetail.jsx",
+          "lines": "17-24"
+        },
+        {
+          "file": "src/services/customers.js",
+          "lines": "11-14"
+        }
       ],
       "graphRefs": [],
-      "controlIds": ["ACT-006"]
+      "controlIds": [
+        "ACT-006"
+      ],
+      "layoutStatus": "source-reconstructed"
+    },
+    {
+      "id": "SCR-004",
+      "name": "Customer Edit State",
+      "route": "/customers/:customerId",
+      "routePattern": "/customers/:customerId",
+      "purpose": "Edit the selected customer's name and email, then save or cancel.",
+      "layout": "main",
+      "entryPoints": [
+        "SCR-002 Edit button"
+      ],
+      "screenshot": null,
+      "layoutAsset": "screens/layouts/SCR-004.svg",
+      "layoutStatus": "source-reconstructed",
+      "runtimeStatus": "not-visited",
+      "evidenceStatus": "source-confirmed",
+      "sourceRefs": [
+        {
+          "file": "src/pages/CustomerDetail.jsx",
+          "lines": "33-73"
+        }
+      ],
+      "graphRefs": [],
+      "controlIds": [
+        "ACT-004",
+        "ACT-005"
+      ]
     }
   ],
   "notes": [
     "SCR-003 is a distinct UI state on the same route, not a different route.",
-    "ACT-006 represents the shared Back to search link, present in the successful detail and not-found states.",
+    "SCR-004 is the edit form state on the same detail route, opened by the Edit control.",
+    "The SVG layout assets are reconstructed from JSX structure with schematic styling because the sample source does not include CSS. They are not browser screenshots.",
+    "The HTML example contains simulated interactions and an illustrative styling system; its shell is not claimed to originate from the sample React source.",
     "The expected output is illustrative and has not been runtime-verified."
   ]
 }
