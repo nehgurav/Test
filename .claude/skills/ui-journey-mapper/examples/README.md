@@ -6,12 +6,16 @@ This directory contains a small fictional React application and representative o
 
 - input-prompt.md: a sample prompt to invoke the skill.
 - sample-repository/: a tiny illustrative frontend to analyze.
-- expected-output/index.html: self-contained interactive screen gallery with simulated source-reconstructed screen views.
+- expected-output/index.html: simple two-view portal — clickable Journeys and per-screen details.
 - expected-output/screens/layouts/: separate SVG page layouts for Customer Search, Customer Detail, Customer Not Found, and Customer Edit. These are screen mockups, not flow diagrams or browser screenshots.
 - expected-output/screens/screens.json: inventory of route-level screens and states.
 - expected-output/screens/interaction-model.json: control-by-control outcomes and branches.
 - expected-output/journeys/customer-search-to-detail.svg: a sample visual journey.
 - expected-output/coverage-report.md: example caveats and evidence accounting.
+
+## Open the example portal
+
+Open `expected-output/index.html`. The Journeys view shows conditional screen flow, and selecting a screen or branch opens its layout and screen-specific behaviour in the Screens view. The Screens view includes a separate SVG layout link. There is no global inspector or standalone evidence dashboard.
 
 ## Safe-use notes
 
