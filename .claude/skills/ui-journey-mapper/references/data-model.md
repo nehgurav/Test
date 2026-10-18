@@ -1,8 +1,10 @@
 # Canonical data model
 
-Keep the model framework-neutral. JSON is the source for generated portal/diagrams.
+Keep the model framework-neutral. JSON is the source for the HTML portal, screen layouts, and journey diagrams.
 
-## `screens.json`
+## screens.json
+
+The sample record below shows that actual screenshot evidence and reconstructed layout are separate fields:
 
 ```json
 {
@@ -25,6 +27,7 @@ Keep the model framework-neutral. JSON is the source for generated portal/diagra
       "entryPoints": [],
       "screenshot": "screenshots/SCR-001.png",
       "layoutAsset": "layouts/SCR-001.svg",
+      "layoutStatus": "runtime-captured | source-reconstructed | inferred | unavailable",
       "runtimeStatus": "visited | not-visited | blocked",
       "evidenceStatus": "runtime-observed | source-confirmed | inferred | blocked | unknown",
       "sourceRefs": [{"file": "src/pages/CustomerSearch.tsx", "lines": "1-120"}],
@@ -35,7 +38,18 @@ Keep the model framework-neutral. JSON is the source for generated portal/diagra
 }
 ```
 
-## `interaction-model.json`
+### Meaning of visual fields
+
+- `screenshot`: path to a real screenshot captured from a running application at a documented viewport. Use `null` if no real screenshot is available.
+- `layoutAsset`: path to an individual screen-layout asset, usually `screens/layouts/SCR-001.svg`. It depicts the screen itself and is **not** the journey flowchart.
+- `layoutStatus`:
+  - `runtime-captured`: visual layout was captured from a running UI. Keep the screenshot path too.
+  - `source-reconstructed`: layout structure was assembled from source, templates, and any available styles, without claiming a runtime capture.
+  - `inferred`: some layout details are inferred due to missing source or styles.
+  - `unavailable`: no defensible layout could be created.
+- When source styling is missing, explicitly label the layout as schematic; do not imply pixel-level accuracy.
+
+## interaction-model.json
 
 ```json
 {
