@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+<title id="title">SCR-003 Customer Not Found — screen layout</title>
+<desc id="desc">Source-reconstructed not-found state for an unknown customer ID, with a title, explanatory absence of the record, and Back to search link. The visual style is schematic.</desc>
+<defs><style>.bg{fill:#f5f7fa}.paper{fill:#fff;stroke:#d9e0e8;stroke-width:1.5}.ink{fill:#17212f}.muted{fill:#617085}.primary{fill:#315ee7}.white{fill:#fff}.font{font-family:Arial,Helvetica,sans-serif}</style></defs>
+<rect class="bg" width="1280" height="820"/>
+<rect class="paper" x="72" y="54" width="1136" height="710" rx="12"/>
+<text class="font ink" x="120" y="125" font-size="33" font-weight="700">Customer not found</text>
+<circle cx="640" cy="285" r="43" fill="#eef2f7"/>
+<text class="font" x="640" y="303" text-anchor="middle" font-size="45" fill="#6b7a90">?</text>
+<text class="font ink" x="640" y="377" text-anchor="middle" font-size="24" font-weight="700">Customer not found</text>
+<text class="font muted" x="640" y="414" text-anchor="middle" font-size="17">We couldn't find a customer with this ID.</text>
+<text class="font muted" x="640" y="442" text-anchor="middle" font-size="17">Return to search and choose a customer from the result list.</text>
+<rect class="primary" x="520" y="480" width="240" height="52" rx="7"/>
+<text class="font white" x="640" y="512" text-anchor="middle" font-size="16" font-weight="700">Back to search</text>
+<text class="font muted" x="120" y="710" font-size="13">Illustrative layout from JSX structure · not runtime-captured · styling is schematic</text>
+</svg>
