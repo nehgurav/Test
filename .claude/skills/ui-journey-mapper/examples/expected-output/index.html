@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UI Journey Mapper — Example Screen Gallery</title>
+<style>
+:root{color-scheme:light;--ink:#17212f;--muted:#637083;--line:#dce3eb;--bg:#f4f7fb;--panel:#fff;--brand:#315ee7;--soft:#edf2ff;--green:#117a58;--orange:#9a5800;--shadow:0 6px 22px rgba(25,42,70,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.5 Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input{font:inherit}button{cursor:pointer}.topbar{height:66px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:2}.brand{display:flex;align-items:center;gap:11px;font-weight:750;font-size:16px}.logo{width:34px;height:34px;border-radius:9px;background:var(--brand);color:white;display:grid;place-items:center;font-weight:800}.subbrand{font-size:12px;color:var(--muted);font-weight:500}.evidence{font-size:11px;font-weight:800;letter-spacing:.06em;border-radius:999px;padding:7px 11px;background:#fff3dc;color:#895300;border:1px solid #f1d6a4}
+.shell{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:235px minmax(450px,1fr) 300px;min-height:calc(100vh - 66px)}.sidebar{border-right:1px solid var(--line);padding:24px 15px;background:#f9fbfd}.side-label{font-size:10px;letter-spacing:.13em;color:#8792a2;font-weight:800;margin:7px 12px 11px}.side-item{width:100%;display:flex;align-items:center;gap:11px;border:0;background:transparent;padding:11px 12px;border-radius:9px;color:#4d5b6d;text-align:left;margin:3px 0}.side-item:hover{background:#edf2fa}.side-item.active{background:#e8efff;color:#234dc8;font-weight:700}.side-icon{width:21px;text-align:center;font-size:16px}.screen-pill{margin-left:auto;background:#d7e2ff;padding:2px 7px;border-radius:99px;font-size:11px}.side-note{font-size:12px;line-height:1.55;color:var(--muted);padding:16px 12px;margin-top:27px;border-top:1px solid var(--line)}
+main{min-width:0;padding:28px 30px 40px}.crumb{font-size:12px;color:var(--muted);margin-bottom:12px}.page-head{display:flex;justify-content:space-between;align-items:flex-start;gap:18px;margin-bottom:22px}.page-head h1{margin:0;font-size:25px;letter-spacing:-.04em}.page-head p{margin:6px 0 0;color:var(--muted)}.route{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;color:#53637a;background:#eaf0f7;padding:7px 9px;border-radius:7px;white-space:nowrap}
+.view-tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:20px}.view-tab{border:0;border-bottom:2px solid transparent;padding:11px 15px;background:transparent;color:var(--muted);font-weight:650}.view-tab.active{border-color:var(--brand);color:var(--brand)}
+.canvas-card{background:#e8edf4;border:1px solid #d9e1eb;border-radius:14px;padding:18px;box-shadow:var(--shadow)}.browser{max-width:800px;min-height:450px;margin:0 auto;background:#fff;border:1px solid #d9e0e8;border-radius:11px;overflow:hidden;box-shadow:0 9px 24px rgba(30,45,70,.08)}.browser-bar{height:40px;background:#f9fafc;border-bottom:1px solid #e3e8ef;display:flex;align-items:center;padding:0 14px;gap:6px}.dot{width:8px;height:8px;border-radius:50%;background:#d1d9e4}.address{margin-left:12px;border:1px solid #e3e8ef;background:white;border-radius:6px;max-width:360px;width:58%;padding:4px 10px;font-size:11px;color:#6b7788}
+.appbar{height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;border-bottom:1px solid #edf0f5}.app-name{font-weight:750;letter-spacing:-.02em}.avatar{width:30px;height:30px;border-radius:50%;background:#e8edff;color:#315ee7;display:grid;place-items:center;font-weight:800;font-size:12px}
+.screen-body{padding:27px 30px 32px;min-height:350px}.screen-body h2{font-size:23px;letter-spacing:-.035em;margin:0 0 5px}.hint{color:var(--muted);margin:0 0 22px;font-size:13px}.searchbox{display:flex;gap:8px;margin-bottom:19px}.field{display:block;width:100%;border:1px solid #cfd8e4;border-radius:7px;background:white;color:var(--ink);padding:10px 12px;outline:none}.field:focus{border-color:#6686ed;box-shadow:0 0 0 3px #dfe7ff}.field-wrap{flex:1;min-width:0}.field-wrap label,.form-row label{display:block;font-size:12px;font-weight:700;color:#445165;margin:0 0 6px}.btn{border:1px solid #cfd8e4;background:white;color:#2d3a4e;border-radius:7px;padding:9px 14px;font-weight:650}.btn.primary{border-color:var(--brand);background:var(--brand);color:white}.btn:hover{filter:brightness(.98)}.btn:disabled{opacity:.5;cursor:not-allowed}.list-label{display:flex;justify-content:space-between;color:#6f7c8d;font-size:12px;margin-bottom:8px}.result-list{border:1px solid #e0e6ed;border-radius:9px;overflow:hidden}.result{width:100%;display:flex;align-items:center;text-align:left;gap:12px;background:white;border:0;border-bottom:1px solid #edf0f5;padding:13px 14px}.result:last-child{border-bottom:0}.result:hover{background:#f7f9ff}.person-icon{width:36px;height:36px;flex:none;background:#edf2ff;color:#315ee7;border-radius:9px;display:grid;place-items:center;font-weight:800}.person-text{min-width:0;flex:1}.person-text strong{display:block;font-size:13px}.person-text span{display:block;color:var(--muted);font-size:12px}.chev{font-size:20px;color:#94a0b0}.empty{padding:26px;text-align:center;background:#fbfcfe;border:1px dashed #d5deea;border-radius:9px;color:var(--muted)}
+.details-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;gap:12px}.back{border:0;background:none;padding:0;color:#315ee7;font-weight:650}.profile{display:flex;align-items:center;gap:15px;margin:12px 0 24px}.profile .person-icon{width:58px;height:58px;border-radius:14px;font-size:18px}.profile h3{margin:0;font-size:18px}.profile p{margin:3px 0 0;color:var(--muted);font-size:12px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}.detail-field{border:1px solid #e4e9f0;border-radius:8px;padding:13px}.detail-field span{display:block;font-size:11px;color:var(--muted);margin-bottom:6px}.detail-field strong{font-size:13px;overflow-wrap:anywhere}.section-title{font-weight:750;font-size:13px;margin:23px 0 10px}.status{padding:10px 12px;border:1px solid #b8e5d3;background:#edfbf4;color:#116b4d;border-radius:7px;font-size:12px;margin-top:14px}.status.error{border-color:#f0c9bc;background:#fff5f1;color:#9b391b}.form-row{margin-bottom:15px}.form-actions{display:flex;gap:8px;margin-top:19px}.notfound{text-align:center;padding:52px 24px}.notfound .big{font-size:48px;color:#9cb0ce}.notfound h2{margin-top:10px}.notfound p{max-width:330px;margin:8px auto 19px;color:var(--muted)}
+.gallery{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}.mini-card{border:1px solid var(--line);background:#fff;border-radius:10px;padding:12px;text-align:left;color:var(--ink);min-width:0}.mini-card.selected{border:2px solid #6a88ed;padding:11px;background:#f7f9ff}.mini-title{font-weight:750;font-size:12px}.mini-route{font-family:ui-monospace,monospace;font-size:10px;color:var(--muted);margin-top:4px;overflow-wrap:anywhere}.mini-preview{height:56px;background:#f3f6fa;border:1px solid #e3e9f0;border-radius:6px;margin-bottom:9px;padding:8px;display:flex;flex-direction:column;gap:5px}.mini-line{height:5px;background:#d8e1ed;border-radius:4px;width:72%}.mini-line.wide{width:93%}.mini-line.short{width:45%}
+.rightbar{border-left:1px solid var(--line);background:#fff;padding:24px 18px}.panel-title{font-size:13px;font-weight:800;margin-bottom:14px}.status-row{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #edf0f5;padding:9px 0;font-size:12px;gap:12px}.ok{color:var(--green);font-weight:750}.warn{color:var(--orange);font-weight:750}.meta-card{border:1px solid var(--line);border-radius:9px;padding:13px;margin-top:20px}.meta-card h3{font-size:12px;margin:0 0 10px}.meta-card p{font-size:12px;color:var(--muted);margin:5px 0}.control-list{display:flex;flex-direction:column;gap:7px}.control-row{display:flex;align-items:flex-start;gap:8px;font-size:12px}.control-id{font-family:ui-monospace,monospace;background:#edf2f8;border-radius:5px;padding:2px 5px;color:#46546a;font-size:10px;flex:none}.footer-note{font-size:11px;color:var(--muted);line-height:1.55;margin-top:20px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#17212f;color:white;padding:10px 16px;border-radius:8px;box-shadow:var(--shadow);display:none;z-index:4}
+@media(max-width:1180px){.shell{grid-template-columns:205px minmax(400px,1fr)}.rightbar{display:none}.gallery{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.shell{display:block}.sidebar{border-right:0;border-bottom:1px solid var(--line);display:flex;overflow:auto;padding:10px}.side-label,.side-note{display:none}.side-item{width:auto;white-space:nowrap;margin:0 3px}.topbar{padding:0 14px}.evidence{font-size:9px}.subbrand{display:none}main{padding:20px 14px}.page-head{display:block}.route{display:inline-block;margin-top:12px}.canvas-card{padding:7px}.screen-body{padding:20px 16px}.appbar{padding:0 16px}.gallery{grid-template-columns:1fr}.browser{min-height:420px}.searchbox{flex-direction:column}.searchbox .btn{align-self:flex-start}.detail-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><div class="logo">UJ</div><div>UI Journey Mapper<div class="subbrand">Example screen gallery · Fictional Customer Admin</div></div></div>
+  <div class="evidence">SOURCE-CONFIRMED · NOT RUNTIME-TESTED</div>
+</header>
+<div class="shell">
+  <aside class="sidebar">
+    <div style="width:100%">
+      <div class="side-label">DOCUMENTATION</div>
+      <button class="side-item active" data-tab="screens"><span class="side-icon">▦</span>Screens <span class="screen-pill">3</span></button>
+      <button class="side-item" data-tab="journey"><span class="side-icon">⌘</span>Journey map</button>
+      <button class="side-item" data-tab="evidence"><span class="side-icon">☷</span>Evidence</button>
+      <div class="side-label" style="margin-top:23px">SCREENS</div>
+      <button class="side-item screen-nav active" data-screen="search"><span class="side-icon">⌕</span>Customer Search</button>
+      <button class="side-item screen-nav" data-screen="detail"><span class="side-icon">▤</span>Customer Detail</button>
+      <button class="side-item screen-nav" data-screen="notfound"><span class="side-icon">⚠</span>Not Found State</button>
+      <div class="side-note">This is a rendered HTML example, not a real screenshot. Screen layout is reconstructed from the sample source code; interactions below are simulated with fictional data.</div>
+    </div>
+  </aside>
+
+  <main>
+    <div class="crumb" id="crumb">Screen Gallery / Customer Search</div>
+    <div class="page-head">
+      <div><h1 id="title">Customer Search</h1><p id="description">Find a customer by name or email, then open their detail page.</p></div>
+      <div class="route" id="route">/customers</div>
+    </div>
+    <div class="view-tabs" id="viewTabs">
+      <button class="view-tab active" data-tab="screens">Screen preview</button>
+      <button class="view-tab" data-tab="journey">Journey map</button>
+      <button class="view-tab" data-tab="evidence">Evidence & source</button>
+    </div>
+
+    <section id="screenView">
+      <div class="canvas-card">
+        <div class="browser">
+          <div class="browser-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><div class="address" id="address">localhost:3000/customers</div></div>
+          <div class="appbar"><div class="app-name">◈ Customer Portal</div><div class="avatar">AG</div></div>
+          <div class="screen-body" id="screenBody"></div>
+        </div>
+      </div>
+      <div class="gallery" aria-label="Screen thumbnails">
+        <button class="mini-card selected" data-screen="search"><div class="mini-preview"><div class="mini-line wide"></div><div class="mini-line"></div><div class="mini-line short"></div></div><div class="mini-title">SCR-001 · Customer Search</div><div class="mini-route">/customers</div></button>
+        <button class="mini-card" data-screen="detail"><div class="mini-preview"><div class="mini-line"></div><div class="mini-line wide"></div><div class="mini-line short"></div></div><div class="mini-title">SCR-002 · Customer Detail</div><div class="mini-route">/customers/:customerId</div></button>
+        <button class="mini-card" data-screen="notfound"><div class="mini-preview"><div class="mini-line short"></div><div class="mini-line"></div><div class="mini-line short"></div></div><div class="mini-title">SCR-003 · Not Found State</div><div class="mini-route">same detail route pattern</div></button>
+      </div>
+    </section>
+
+    <section id="journeyView" hidden>
+      <div class="canvas-card">
+        <div style="background:#fff;border:1px solid #dce3eb;border-radius:11px;padding:24px">
+          <h2 style="margin:0 0 4px;font-size:18px">Customer Search to Detail</h2>
+          <p style="margin:0 0 22px;color:#637083">Select a node to inspect that screen. Flow and branch labels are based on source analysis.</p>
+          <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px">
+            <button class="btn primary" data-screen="search">SCR-001 · Search</button><span>→ Search</span><span style="font-size:22px;color:#8a98ab">◇</span><span>→ matching result →</span><button class="btn" data-screen="detail">SCR-002 · Detail</button>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin:17px 0 0 140px;color:#9a5800">
+            <span>↳ no matching results: remain on search</span>
+            <span>↳ unknown ID: </span><button class="btn" data-screen="notfound">SCR-003 · Not Found</button>
+          </div>
+          <div style="border-top:1px solid #e3e8ef;margin-top:22px;padding-top:16px">
+            <strong style="font-size:13px">In-place detail states</strong>
+            <p style="font-size:13px;color:#637083;margin:7px 0 0">Edit opens the edit form. Save updates the in-memory demo store. Cancel discards the draft. These are state changes, not separate route navigations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidenceView" hidden>
+      <div class="canvas-card" style="background:white">
+        <h2 style="font-size:18px;margin:0 0 8px">Evidence and confidence</h2>
+        <p style="color:#637083;margin-top:0">This sample demonstrates honest evidence labelling.</p>
+        <div class="status-row"><span>Source code inspected</span><span class="ok">Yes</span></div>
+        <div class="status-row"><span>Browser run performed</span><span class="warn">No</span></div>
+        <div class="status-row"><span>Screenshots captured</span><span class="warn">No</span></div>
+        <div class="status-row"><span>Backend API calls observed</span><span class="warn">None exist in sample</span></div>
+        <div class="status-row"><span>Data</span><span class="ok">Fictional mock data</span></div>
+        <h3 style="margin-top:24px">Source references</h3>
+        <ul style="padding-left:20px;line-height:1.8;color:#536176">
+          <li><code>sample-repository/src/App.jsx</code> — route configuration</li>
+          <li><code>sample-repository/src/pages/CustomerSearch.jsx</code> — search and result links</li>
+          <li><code>sample-repository/src/pages/CustomerDetail.jsx</code> — detail, edit, save, cancel, not-found</li>
+          <li><code>sample-repository/src/services/customers.js</code> — in-memory mock data only</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <aside class="rightbar">
+    <div class="panel-title">SCREEN INSPECTOR</div>
+    <div class="status-row"><span>Evidence</span><span class="warn">Source-confirmed</span></div>
+    <div class="status-row"><span>Runtime validation</span><span class="warn">Not run</span></div>
+    <div class="status-row"><span>Route</span><span id="inspectRoute" style="font-family:monospace;font-size:10px">/customers</span></div>
+    <div class="meta-card"><h3>VISIBLE CONTROLS</h3><div class="control-list" id="controls"></div></div>
+    <div class="meta-card"><h3>TRANSITIONS</h3><div id="transitions" style="font-size:12px;color:#637083;line-height:1.7"></div></div>
+    <div class="meta-card"><h3>OUTPUT NOTE</h3><p>This HTML demonstrates a screen gallery and simulated controls. It does not substitute for real screenshots, browser testing, or source-grounded evidence from the target app.</p></div>
+  </aside>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<script>
+const customers=[
+ {id:"c-101",name:"Ava Shah",email:"ava@example.test",segment:"Retail",status:"Active",since:"12 March 2024"},
+ {id:"c-102",name:"Noah Reed",email:"noah@example.test",segment:"Retail",status:"Active",since:"28 June 2023"}
+];
+let screen="search",activeCustomer="c-101",editing=false,query="",message="",draft=null;
+let currentTab="screens";
+const $=id=>document.getElementById(id);
+const getCustomer=id=>customers.find(c=>c.id===id)||null;
+function initials(name){return name.split(" ").map(p=>p[0]).slice(0,2).join("").toUpperCase()}
+function toast(text){$("toast").textContent=text;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2100)}
+function setTab(tab){
+ currentTab=tab;
+ $("screenView").hidden=tab!=="screens";$("journeyView").hidden=tab!=="journey";$("evidenceView").hidden=tab!=="evidence";
+ document.querySelectorAll("[data-tab]").forEach(b=>b.classList.toggle("active",b.dataset.tab===tab));
+}
+function selectScreen(next){
+ screen=next;editing=false;message="";draft=null;
+ if(next==="notfound")activeCustomer="missing-id";
+ else if(next==="detail"&&!getCustomer(activeCustomer))activeCustomer="c-101";
+ setTab("screens");render();
+}
+function render(){
+ const c=getCustomer(activeCustomer);
+ const names={search:["Customer Search","Find a customer by name or email, then open their detail page.","/customers"],detail:["Customer Detail","View the selected customer's profile and edit demo fields.","/customers/"+activeCustomer],notfound:["Customer Not Found","This state appears when the requested customer ID does not exist.","/customers/"+activeCustomer]};
+ const meta=names[screen];$("title").textContent=meta[0];$("description").textContent=meta[1];$("route").textContent=meta[2];$("address").textContent="localhost:3000"+meta[2];$("inspectRoute").textContent=meta[2];$("crumb").textContent="Screen Gallery / "+meta[0];
+ document.querySelectorAll(".screen-nav,.mini-card").forEach(b=>b.classList.toggle("active",b.dataset.screen===screen));
+ document.querySelectorAll(".mini-card").forEach(b=>b.classList.toggle("selected",b.dataset.screen===screen));
+ $("controls").innerHTML="";$("transitions").innerHTML="";
+ let controls=[],transitions=[],markup="";
+ if(screen==="search"){
+  const matches=customers.filter(c=>(c.name+" "+c.email).toLowerCase().includes(query.trim().toLowerCase()));
+  controls=[["ACT-001","Search button"],["ACT-002","Customer result links"]];
+  transitions=["Matching results → result links","No matches → empty-state message","Select result → detail route"];
+  markup='<h2>Customer search</h2><p class="hint">Search the customer directory using a name or email address.</p><form id="searchForm"><div class="searchbox"><div class="field-wrap"><label for="customerQuery">Name or email</label><input class="field" id="customerQuery" placeholder="e.g. Ava Shah" value="'+escapeHtml(query)+'"></div><button class="btn primary" type="submit">Search</button></div></form><div class="list-label"><span>Customer results</span><span>'+matches.length+' found</span></div>';
+  if(matches.length){markup+='<div class="result-list">'+matches.map(c=>'<button class="result" data-customer="'+c.id+'"><div class="person-icon">'+initials(c.name)+'</div><div class="person-text"><strong>'+escapeHtml(c.name)+'</strong><span>'+escapeHtml(c.email)+'</span></div><span class="chev">›</span></button>').join("")+'</div>'}
+  else{markup+='<div class="empty"><div style="font-size:24px;margin-bottom:5px">⌕</div><strong>No customers found</strong><div style="font-size:12px;margin-top:5px">Try another name or email address.</div></div>'}
+  markup+="</div>";
+ }else if(screen==="notfound"||!c){
+  controls=[["ACT-006","Back to search link"]];transitions=["Back to search → /customers"];
+  markup='<div class="notfound"><div class="big">⌕</div><h2>Customer not found</h2><p>We couldn’t find a customer with this ID. Return to search and choose a customer from the result list.</p><button class="btn primary" id="backSearch">Back to search</button></div></div>';
+ }else if(editing){
+  controls=[["ACT-004","Save changes"],["ACT-005","Cancel"]];
+  transitions=["Save → validate and update in-memory data","Invalid field → browser validation blocks submit","Cancel → discard draft and return to detail"];
+  markup='<div class="details-top"><button class="back" id="backSearch">‹ Back to search</button><span style="font-size:12px;color:#637083">Customer ID: '+c.id+'</span></div><h2>Edit customer</h2><p class="hint">Changes apply only to this browser example session.</p><form id="editForm"><div class="form-row"><label for="editName">Full name</label><input class="field" required id="editName" value="'+escapeHtml(draft.name)+'"></div><div class="form-row"><label for="editEmail">Email address</label><input class="field" required type="email" id="editEmail" value="'+escapeHtml(draft.email)+'"></div><div class="form-actions"><button class="btn primary" type="submit">Save changes</button><button class="btn" type="button" id="cancelEdit">Cancel</button></div></form>';
+  if(message)markup+='<div class="status error">'+escapeHtml(message)+'</div>';
+  markup+='</div>';
+ }else{
+  controls=[["ACT-003","Edit button"],["ACT-006","Back to search link"]];
+  transitions=["Edit → edit form (in-place state)","Save → updated detail state","Cancel → previous detail state","Back → /customers"];
+  markup='<div class="details-top"><button class="back" id="backSearch">‹ Back to search</button><button class="btn primary" id="editButton">Edit</button></div><div class="profile"><div class="person-icon">'+initials(c.name)+'</div><div><h3>'+escapeHtml(c.name)+'</h3><p>Customer record · '+c.id+'</p></div></div><div class="section-title">Personal information</div><div class="detail-grid"><div class="detail-field"><span>Full name</span><strong>'+escapeHtml(c.name)+'</strong></div><div class="detail-field"><span>Email address</span><strong>'+escapeHtml(c.email)+'</strong></div><div class="detail-field"><span>Segment</span><strong>'+c.segment+'</strong></div><div class="detail-field"><span>Status</span><strong style="color:#117a58">● '+c.status+'</strong></div></div><div class="section-title">Relationship</div><div class="detail-field"><span>Customer since</span><strong>'+c.since+'</strong></div>';
+  if(message)markup+='<div class="status">'+escapeHtml(message)+'</div>';
+  markup+='</div>';
+ }
+ $("screenBody").innerHTML=markup;
+ controls.forEach(([id,label])=>{const row=document.createElement("div");row.className="control-row";row.innerHTML='<span class="control-id">'+id+'</span><span>'+label+'</span>';$("controls").appendChild(row)});
+ $("transitions").innerHTML=transitions.map(t=>"• "+t).join("<br>");
+ const searchForm=$("searchForm");if(searchForm)searchForm.addEventListener("submit",e=>{e.preventDefault();query=$("customerQuery").value;render()});
+ document.querySelectorAll("[data-customer]").forEach(b=>b.addEventListener("click",()=>{activeCustomer=b.dataset.customer;screen="detail";editing=false;message="";render()}));
+ const back=$("backSearch");if(back)back.addEventListener("click",()=>{screen="search";query="";editing=false;message="";render()});
+ const edit=$("editButton");if(edit)edit.addEventListener("click",()=>{draft={name:c.name,email:c.email};editing=true;message="";render()});
+ const cancel=$("cancelEdit");if(cancel)cancel.addEventListener("click",()=>{editing=false;draft=null;message="";render()});
+ const form=$("editForm");if(form)form.addEventListener("submit",e=>{e.preventDefault();const found=getCustomer(activeCustomer);if(!found){message="The customer no longer exists in the demo data.";render();return}found.name=$("editName").value.trim();found.email=$("editEmail").value.trim();editing=false;draft=null;message="Changes saved in this example session.";render();toast("Demo record updated")});
+}
+function escapeHtml(value){return String(value).replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]))}
+document.querySelectorAll(".screen-nav,.mini-card,[data-screen]").forEach(b=>b.addEventListener("click",()=>selectScreen(b.dataset.screen)));
+document.querySelectorAll("[data-tab]").forEach(b=>b.addEventListener("click",()=>setTab(b.dataset.tab)));
+render();
+</script>
+</body>
+</html>
