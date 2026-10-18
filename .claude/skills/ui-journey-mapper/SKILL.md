@@ -19,26 +19,23 @@ This is brownfield documentation, not a redesign. Never invent screens or behavi
 
 ## Output-first contract
 
-Prioritize visual views and editing-ready artifacts over code explanations. Generate under `ui-documentation/`:
+Prioritize a small, usable visual portal over a crowded dashboard. Generate outputs under `ui-documentation/`.
 
-1. `index.html` — browsable visual portal with:
-   - **Screen Gallery**: screenshots/thumbnails, screen name, route, entry points.
-   - **Journey Map**: application overview plus journey-specific diagrams.
-   - **Screen Detail**: screenshot/layout, numbered controls, outcomes, branches, evidence.
-   - search/filter by screen, route, journey, and evidence status.
-2. `journeys/application-overview.svg`
-3. `journeys/application-overview.drawio`
-4. `journeys/individual-journeys/`
-5. `screens/screens.json`
-6. `screens/interaction-model.json`
-7. `screens/screenshots/` — real screenshots when runtime is available.
-8. `screens/layouts/SCR-*.svg` — one individual screen-layout SVG for every documented screen or meaningful UI state, when feasible.
-9. `coverage-report.md`
-10. `README.md` — viewing, importing, and regeneration instructions.
+1. `index.html` with exactly two primary views:
+   - **Journeys** (default): show how a user moves between screens, actions on transitions, and conditional branches. Every screen/state node must be clickable and open that item in the Screens view. Branch outcome links must also navigate to the relevant screen/state.
+   - **Screens**: a simple screen selector, the actual screenshot or individual reconstructed screen-layout asset, and concise details of controls and conditional behaviour for the selected screen.
+2. `journeys/application-overview.svg` and `journeys/application-overview.drawio`.
+3. `journeys/individual-journeys/` for workflow-specific flow diagrams.
+4. `screens/screens.json` and `screens/interaction-model.json`.
+5. `screens/screenshots/` for real browser captures when runtime is available.
+6. `screens/layouts/SCR-*.svg` — one individual screen layout for each documented screen or meaningful state, where feasible.
+7. `coverage-report.md` and a short `README.md`.
+
+Keep the HTML interface deliberately simple: **Journeys** answers “how does the user flow?”; **Screens** answers “what does this screen look like, and what can happen here?”. Do not add a global inspector, standalone evidence dashboard, repeated metric panels, or other secondary views unless requested. Show evidence status as a small inline label next to the relevant behaviour/branch. Avoid duplicating the full coverage report inside the HTML.
 
 If an output cannot be generated, explain why in the coverage report.
 
-**The journey diagram and screen-layout assets are different deliverables.** A journey SVG shows nodes and arrows for navigation/branching; it is not a screen layout. Each `screens/layouts/SCR-*.svg` must depict the UI itself (page structure, header/navigation if present in the source, labels, fields, buttons, lists/tables, notices, dialogs, and visual hierarchy). Never satisfy the screen-layout requirement with a flowchart.
+**Journey diagrams and screen layouts are different deliverables.** A journey SVG shows screen/state nodes and arrows for navigation/branching; it is not a screen layout. Each `screens/layouts/SCR-*.svg` must depict the UI itself (page structure, navigation, labels, fields, buttons, lists/tables, notices, dialogs, and relative hierarchy). Never satisfy the screen-layout requirement with a flowchart.
 
 ## Framework strategy: common engine + adapters
 
@@ -133,21 +130,21 @@ Use `references/data-model.md`. Keep IDs stable between runs. Store evidence and
 
 ### 6. Generate the visual views
 
-#### View A — Journey map
-- Screen nodes, not source-file nodes.
-- Label edges with user actions, e.g. `Click Search` or `Select Transactions tab`.
-- Show branches such as valid/invalid, results/no results/request failed.
-- Distinguish route navigation, in-place state change, modal, tab and external navigation.
-- Include a legend.
-- Split large graphs into workflow-specific diagrams rather than producing an unreadable graph.
-- Export SVG and draw.io XML.
+#### View A — Journeys
+- Keep the journey view focused on one workflow at a time when the application is large.
+- Show screen/state nodes and label transitions with user actions.
+- Put conditions beside the relevant branch (e.g. results/no results, valid/invalid, request success/failure).
+- Distinguish route navigation from an in-place state change, modal, tab change, and external navigation.
+- Make every screen/state node clickable in `index.html`; clicking a node opens the matching screen in the Screens view. Make branch outcome links clickable too.
+- Show a compact legend; do not overload the view with code references or evidence metrics.
+- Export separate SVG and draw.io flow diagrams.
 
 #### View B — Screen gallery/detail
 - Prefer an actual browser screenshot for the running UI when safe runtime access is available; capture each relevant screen and important state at a documented viewport.
 - Also generate one individual screen-layout asset per documented screen/state. Keep these assets in `screens/layouts/SCR-*.svg` and list them in `screens.json`.
 - A screen-layout SVG must depict the UI itself, not navigation arrows or screen-node boxes. Include the visible page/content regions, controls, labels, table/list rows, dialogs, empty/error states, and relative positioning supported by the source.
 - Reuse actual CSS, design tokens, component libraries, and design-system styles when available. If styles are missing or runtime cannot be accessed, create a source-reconstructed wireframe based on JSX/templates/DOM structure, mark `layoutStatus: source-reconstructed`, and state that styling/dimensions are schematic. Do not claim pixel accuracy.
-- The HTML portal should display a screen preview and offer a link to that screen's separate SVG layout asset; navigation to the journey view must be clearly distinct.
+- The HTML Screens view should display the selected screen preview and its controls/conditional outcomes, with a link to the separate SVG layout asset. Keep Journeys and Screens as the only primary views; transitions from the Journey view must open the matching screen details.
 - Each detail includes purpose, route, entry points, screenshot/layout, numbered controls, transitions, branches, evidence, and related journeys.
 - Keep code details out of the primary view.
 
