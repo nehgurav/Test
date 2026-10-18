@@ -80,6 +80,14 @@ The sample record below shows that actual screenshot evidence and reconstructed 
 }
 ```
 
+### Shared controls and multiple UI states
+
+A control can appear in more than one starting state while retaining the same semantics. In that case, keep one stable action ID and add an optional `screenIds` array listing every applicable starting screen/state. Keep `screenId` as the primary/legacy field for compatibility. If controls have materially different behaviour, model them as separate actions instead of combining them.
+
+Example: a shared “Back to search” link may be rendered by both the customer-detail and not-found states. A Search control may remain visible in both the results and no-results states. Do not make these actions appear to belong to only one starting state.
+
+Meaningful UI states can share one URL/route pattern. Model them as separate screen/state records when they change visible content or available actions (for example, an empty search result or a not-found branch), but do not invent a separate route to distinguish them.
+
 ## Evidence statuses
 
 - `runtime-observed`: interaction/outcome was exercised and observed.
