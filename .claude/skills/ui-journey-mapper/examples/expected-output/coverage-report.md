@@ -16,11 +16,11 @@
 - Journeys generated: 1 illustrative SVG
 
 ## Outputs in this example
-- [x] Interactive HTML screen gallery with reconstructed layouts
+- [x] Simple two-view HTML portal (Journeys ↔ Screens), with clickable flow nodes
 - [x] Four individual screen-layout SVG assets, separate from the journey flow SVG
 - [x] Screen inventory JSON
 - [x] Interaction model JSON
-- [x] One illustrative journey SVG
+- [x] Separate journey flow SVG plus four per-screen layout SVGs
 - [x] Coverage report
 - [ ] Full generated portal for a target app (this folder contains a small illustrative HTML gallery only)
 - [ ] Application overview draw.io
