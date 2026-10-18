@@ -4,8 +4,13 @@ import { getCustomer, updateCustomer } from "../services/customers.js";
 
 export default function CustomerDetail() {
   const { customerId } = useParams();
-  const [customer, setCustomer] = useState(null);
-  const [draft, setDraft] = useState({ name: "", email: "" });
+  // The demo lookup is synchronous, so initialize from the requested ID to avoid
+  // briefly showing the not-found branch while the effect runs.
+  const [customer, setCustomer] = useState(() => getCustomer(customerId));
+  const [draft, setDraft] = useState(() => {
+    const initial = getCustomer(customerId);
+    return initial ? { name: initial.name, email: initial.email } : { name: "", email: "" };
+  });
   const [editing, setEditing] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -39,6 +44,10 @@ export default function CustomerDetail() {
   function saveChanges(event) {
     event.preventDefault();
     const updated = updateCustomer(customer.id, draft);
+    if (!updated) {
+      setMessage("Customer could not be updated in the demo store.");
+      return;
+    }
     setCustomer(updated);
     setEditing(false);
     setMessage("Changes saved (in-memory demo).");
