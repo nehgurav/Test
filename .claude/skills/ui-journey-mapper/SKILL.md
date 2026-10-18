@@ -25,12 +25,12 @@ Prioritize a small, usable visual portal over a crowded dashboard. Generate outp
    - **Journeys** (default): show how a user moves between screens, actions on transitions, and conditional branches. Every screen/state node must be clickable and open that item in the Screens view. Branch outcome links must also navigate to the relevant screen/state.
    - **Screens**: a simple screen selector, the actual screenshot or individual reconstructed screen-layout asset, and concise details of controls and conditional behaviour for the selected screen.
 2. `journeys/application-overview.svg` and `journeys/application-overview.drawio`.
-3. `technical-appendix.md` when requested or when a useful implementation/data-flow trace can be established; link to it from Screens rather than adding a third primary view.
 3. `journeys/individual-journeys/` for workflow-specific flow diagrams.
 4. `screens/screens.json` and `screens/interaction-model.json`.
 5. `screens/screenshots/` for real browser captures when runtime is available.
 6. `screens/layouts/SCR-*.svg` — one individual screen layout for each documented screen or meaningful state, where feasible.
 7. `coverage-report.md` and a short `README.md`.
+8. `technical-appendix.md` when requested or when a useful implementation/data-flow trace can be established; link to it from Screens rather than adding a third primary view.
 
 Keep the HTML interface deliberately simple: **Journeys** answers “how does the user flow?”; **Screens** answers “what does this screen look like, and what can happen here?”. Do not add a global inspector, standalone evidence dashboard, repeated metric panels, or other secondary views unless requested. Show evidence status as a small inline label next to the relevant behaviour/branch. Avoid duplicating the full coverage report inside the HTML.
 
