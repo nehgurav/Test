@@ -17,6 +17,7 @@
 
 ## Outputs in this example
 - [x] Interactive HTML screen gallery with reconstructed layouts
+- [x] Four individual screen-layout SVG assets, separate from the journey flow SVG
 - [x] Screen inventory JSON
 - [x] Interaction model JSON
 - [x] One illustrative journey SVG
@@ -33,7 +34,7 @@ The behaviours are labelled source-confirmed because the included source code im
 - customers.js is an in-memory mock, not a real service or API.
 - Save updates in-memory data only; persistence across reloads is not implemented.
 - This folder is an instructional reference, not a production-ready UI application.
-- No runtime screenshots are included; index.html uses explicit reconstructed HTML/CSS layouts, not fabricated screenshots.
+- No runtime screenshots are included. The HTML gallery and four screen-layout SVGs are source-reconstructed mockups; sample JSX has no CSS, so visual styling/dimensions are schematic. The separate journey SVG is a flow diagram only.
 
 ## Safety review
 All data is synthetic, with reserved .test email addresses. No credentials or production data are present.
