@@ -51,7 +51,7 @@
       </div>
     </div>
     <div class="legend"><span>Route navigation = URL changes</span><span>In-place state change = same URL</span><span>Business intent = analyst interpretation</span><span>Evidence = source-confirmed, runtime not exercised</span></div>
-    <p class="note">Selecting a screen or branch opens its detail in the Screens view. Empty search results and a missing customer are modelled as different states: one belongs to Search; the other belongs to Customer Detail.</p>
+    <p class="note">Selecting a screen or branch updates the selected-state details below on this same page. Empty search results and a missing customer are different states: one belongs to Search; the other belongs to Customer Detail.</p>
   </section>
 
   <section id="screenDetails" class="screen-details">
@@ -100,7 +100,6 @@ const data = {
 };
 const $=id=>document.getElementById(id);
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function view(name){ /* Single unified page: never switch or hide primary views. */ }
 function traceMarkup(c){
  return '<details class="details"><summary>Implementation trace (developer / architect)</summary><dl class="trace">'+
  '<dt>Source</dt><dd><a href="'+esc(sourceBase+c.source)+'" target="_blank" rel="noopener"><code>'+esc(c.source)+'</code></a></dd>'+
@@ -112,7 +111,7 @@ function traceMarkup(c){
  '</dl></details>';
 }
 function screen(id){
- const s=data[id];if(!s)return;view("screens");
+ const s=data[id];if(!s)return;
  $("screenTitle").textContent=s.title;$("screenPurpose").textContent=s.purpose;$("screenRoute").textContent=s.route;$("layoutImage").src=s.image;$("layoutImage").alt=s.title+" screen layout";$("layoutLink").href=s.image;
  $("businessIntent").textContent=s.businessIntent;$("acceptance").textContent=s.acceptance;
  document.querySelectorAll("[data-screen]").forEach(b=>b.classList.toggle("active",b.classList.contains("choice")&&b.dataset.screen===id));
