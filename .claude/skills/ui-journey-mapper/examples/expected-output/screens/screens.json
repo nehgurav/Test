@@ -1,0 +1,74 @@
+{
+  "schemaVersion": "1.0",
+  "generatedAt": "illustrative-example",
+  "application": {
+    "name": "Fictional Customer Admin",
+    "framework": "React + React Router",
+    "repositoryScope": ".claude/skills/ui-journey-mapper/examples/sample-repository/",
+    "graphSource": "none"
+  },
+  "screens": [
+    {
+      "id": "SCR-001",
+      "name": "Customer Search",
+      "route": "/customers",
+      "routePattern": "/customers",
+      "purpose": "Search customers by name or email and open a customer record.",
+      "layout": "main",
+      "entryPoints": ["/"],
+      "screenshot": null,
+      "layoutAsset": null,
+      "runtimeStatus": "not-visited",
+      "evidenceStatus": "source-confirmed",
+      "sourceRefs": [
+        { "file": "src/App.jsx", "lines": "1-13" },
+        { "file": "src/pages/CustomerSearch.jsx", "lines": "1-54" }
+      ],
+      "graphRefs": [],
+      "controlIds": ["ACT-001", "ACT-002"]
+    },
+    {
+      "id": "SCR-002",
+      "name": "Customer Detail",
+      "route": "/customers/:customerId",
+      "routePattern": "/customers/:customerId",
+      "purpose": "View a customer, edit name/email in local demo state, or return to search.",
+      "layout": "main",
+      "entryPoints": ["SCR-001 customer-result link", "direct route"],
+      "screenshot": null,
+      "layoutAsset": null,
+      "runtimeStatus": "not-visited",
+      "evidenceStatus": "source-confirmed",
+      "sourceRefs": [
+        { "file": "src/App.jsx", "lines": "1-13" },
+        { "file": "src/pages/CustomerDetail.jsx", "lines": "1-84" }
+      ],
+      "graphRefs": [],
+      "controlIds": ["ACT-003", "ACT-004", "ACT-005", "ACT-006"]
+    },
+    {
+      "id": "SCR-003",
+      "name": "Customer Not Found State",
+      "route": "/customers/:customerId",
+      "routePattern": "/customers/:customerId",
+      "purpose": "Show a not-found message for an unknown customer ID and offer a return link.",
+      "layout": "main",
+      "entryPoints": ["SCR-002 lookup returns null"],
+      "screenshot": null,
+      "layoutAsset": null,
+      "runtimeStatus": "not-visited",
+      "evidenceStatus": "source-confirmed",
+      "sourceRefs": [
+        { "file": "src/pages/CustomerDetail.jsx", "lines": "17-24" },
+        { "file": "src/services/customers.js", "lines": "11-14" }
+      ],
+      "graphRefs": [],
+      "controlIds": ["ACT-006"]
+    }
+  ],
+  "notes": [
+    "SCR-003 is a distinct UI state on the same route, not a different route.",
+    "ACT-006 represents the shared Back to search link, present in the successful detail and not-found states.",
+    "The expected output is illustrative and has not been runtime-verified."
+  ]
+}
