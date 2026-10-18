@@ -6,7 +6,8 @@ This directory contains a small fictional React application and representative o
 
 - input-prompt.md: a sample prompt to invoke the skill.
 - sample-repository/: a tiny illustrative frontend to analyze.
-- expected-output/index.html: self-contained interactive screen gallery with reconstructed Customer Search, Customer Detail, and Not Found layouts.
+- expected-output/index.html: self-contained interactive screen gallery with simulated source-reconstructed screen views.
+- expected-output/screens/layouts/: separate SVG page layouts for Customer Search, Customer Detail, Customer Not Found, and Customer Edit. These are screen mockups, not flow diagrams or browser screenshots.
 - expected-output/screens/screens.json: inventory of route-level screens and states.
 - expected-output/screens/interaction-model.json: control-by-control outcomes and branches.
 - expected-output/journeys/customer-search-to-detail.svg: a sample visual journey.
