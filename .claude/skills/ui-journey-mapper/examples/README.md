@@ -1,27 +1,32 @@
 # UI Journey Mapper example
 
-This directory contains a small fictional React application and representative output from a source-only analysis. It demonstrates the expected level of detail without needing access to a real customer application.
+This directory contains a fictional React application and illustrative source-analysis outputs. It demonstrates how the skill can make a UI understandable to product, analysis, engineering, and architecture stakeholders without pretending that source inspection is runtime verification.
 
 ## Contents
 
-- input-prompt.md: a sample prompt to invoke the skill.
-- sample-repository/: a tiny illustrative frontend to analyze.
-- expected-output/index.html: simple two-view portal — clickable Journeys and per-screen details.
-- expected-output/screens/layouts/: separate SVG page layouts for Customer Search, Customer Detail, Customer Not Found, and Customer Edit. These are screen mockups, not flow diagrams or browser screenshots.
-- expected-output/screens/screens.json: inventory of route-level screens and states.
-- expected-output/screens/interaction-model.json: control-by-control outcomes and branches.
-- expected-output/journeys/customer-search-to-detail.svg: a sample visual journey.
-- expected-output/coverage-report.md: example caveats and evidence accounting.
+- `input-prompt.md`: example prompt for invoking the skill.
+- `sample-repository/`: small fictional React + React Router frontend with in-memory mock data.
+- `expected-output/index.html`: two-view portal — **Journeys** and **Screens**. No extra top-level inspector or dashboard.
+- `expected-output/screens/layouts/`: five individual screen/state layouts: Customer Search with results, Customer Search with no results, Customer Detail, Customer Edit, and Customer Not Found. These are schematic SVGs, not browser screenshots.
+- `expected-output/screens/screens.json`: inventory of five route-level screens and meaningful UI states.
+- `expected-output/screens/interaction-model.json`: six stable control/action IDs, outcomes, branches, source references, and shared-start-state metadata where needed.
+- `expected-output/journeys/customer-search-to-detail.svg`: workflow diagram separate from individual screen layouts.
+- `expected-output/architecture/data-flow.svg`: source-confirmed component/data-flow map, with absent production architecture components called out.
+- `expected-output/technical-appendix.md`: PO/BA review prompts, developer acceptance scenarios, source mapping, architecture gaps, and evidence boundaries.
+- `expected-output/coverage-report.md`: coverage counts, validation status, and limitations.
 
 ## Open the example portal
 
-Open `expected-output/index.html`. The Journeys view shows conditional screen flow, and selecting a screen or branch opens its layout and screen-specific behaviour in the Screens view. The Screens view includes a separate SVG layout link. There is no global inspector or standalone evidence dashboard.
+Open `expected-output/index.html`. The Journeys view communicates paths and branches; selecting a node or outcome opens the matching screen/state in Screens. Each control has a business-rule/acceptance cue and an expandable implementation trace for developers and architects. A link opens the separate technical appendix.
 
-## Safe-use notes
+## How to read the evidence
 
-- All names and data are fictional.
-- The sample service uses in-memory mock data. It does not call a real API.
-- The expected results are illustrative, not a claim that the sample was run in a browser.
-- index.html contains hand-built HTML/CSS layouts based on the sample source. It is not a captured screenshot and is not evidence of pixel-perfect runtime fidelity.
-- Findings are marked source-confirmed because the source is inspectable, but not runtime-observed.
-- Use the real repository's source and available runtime evidence for actual documentation. Do not copy the sample's screen names or outcomes into another project.
+- **Source-confirmed** means the inspected code clearly establishes the described behaviour. It does not mean the behaviour was executed.
+- **Inferred** is used for business-purpose interpretation that should be validated by a PO/BA. It must not be mistaken for an approved requirement.
+- **Not evidenced / absent from this sample** means the included source does not show that capability; it is not proof that a real target system lacks it.
+- The no-results state (`SCR-005`) and not-found state (`SCR-003`) are different states on existing route patterns, not invented routes.
+- A shared action can appear on several starting states. The example uses optional `screenIds` while retaining `screenId` as the primary/legacy field.
+
+## Limitations and safety
+
+All names and emails are fictional. The mock service uses an in-memory array and makes no network requests. No browser execution was performed; no runtime screenshot or runtime-observed transition is claimed. JSX has no CSS, so layouts use schematic styling and do not claim pixel accuracy. There is no backend/API/database/auth/audit/deployment architecture implemented in the sample; the technical appendix marks these as gaps rather than guessing.
