@@ -1,0 +1,138 @@
+{
+  "schemaVersion": "1.0",
+  "actions": [
+    {
+      "id": "ACT-001",
+      "screenId": "SCR-001",
+      "label": "Search",
+      "controlType": "form submit button",
+      "action": "Submit the name/email query and update the displayed result list.",
+      "handlerRef": { "file": "src/pages/CustomerSearch.jsx", "symbol": "handleSearch" },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "one or more customers match",
+          "targetScreenId": "SCR-001",
+          "targetState": "matching result links displayed",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        },
+        {
+          "condition": "no customers match",
+          "targetScreenId": "SCR-001",
+          "targetState": "No customers found status message displayed",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "Client-side filtering only; no network request is made."
+    },
+    {
+      "id": "ACT-002",
+      "screenId": "SCR-001",
+      "label": "Customer result link",
+      "controlType": "link",
+      "action": "Navigate to the selected customer's detail route.",
+      "handlerRef": { "file": "src/pages/CustomerSearch.jsx", "symbol": "Link to /customers/:customerId" },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "user activates a customer result",
+          "targetScreenId": "SCR-002",
+          "targetState": "customer detail rendered for a known ID",
+          "transitionType": "route-navigation",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "Unknown IDs render SCR-003 on the same route pattern."
+    },
+    {
+      "id": "ACT-003",
+      "screenId": "SCR-002",
+      "label": "Edit",
+      "controlType": "button",
+      "action": "Copy current customer fields to the draft and display the edit form.",
+      "handlerRef": { "file": "src/pages/CustomerDetail.jsx", "symbol": "startEditing" },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "Edit activated",
+          "targetScreenId": "SCR-002",
+          "targetState": "edit form visible",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "In-place state change; not route navigation."
+    },
+    {
+      "id": "ACT-004",
+      "screenId": "SCR-002",
+      "label": "Save changes",
+      "controlType": "form submit button",
+      "action": "Apply browser required/email validation and update the in-memory demo store.",
+      "handlerRef": { "file": "src/pages/CustomerDetail.jsx", "symbol": "saveChanges" },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "browser validation succeeds and customer ID exists",
+          "targetScreenId": "SCR-002",
+          "targetState": "updated values displayed with a Changes saved status",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "No backend API or persistence across reloads is implemented."
+    },
+    {
+      "id": "ACT-005",
+      "screenId": "SCR-002",
+      "label": "Cancel",
+      "controlType": "button",
+      "action": "Discard the draft and leave edit mode.",
+      "handlerRef": { "file": "src/pages/CustomerDetail.jsx", "symbol": "cancelEditing" },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "Cancel activated",
+          "targetScreenId": "SCR-002",
+          "targetState": "detail view restored from current customer data",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "In-place state change."
+    },
+    {
+      "id": "ACT-006",
+      "screenId": "SCR-002",
+      "label": "Back to search",
+      "controlType": "link",
+      "action": "Navigate back to /customers.",
+      "handlerRef": { "file": "src/pages/CustomerDetail.jsx", "symbol": "Link to /customers" },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "link activated from successful detail or not-found state",
+          "targetScreenId": "SCR-001",
+          "targetState": "customer search screen",
+          "transitionType": "route-navigation",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "The same link is rendered in both detail branches."
+    }
+  ]
+}
