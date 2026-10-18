@@ -15,13 +15,10 @@
 <body>
 <header class="top">
   <div class="brand">UI Journey Mapper <small>Fictional Customer Admin · example</small></div>
-  <nav class="tabs" aria-label="Main views">
-    <button class="tab active" data-view="journey">Journeys</button><button class="tab" data-view="screens">Screens</button>
-  </nav>
 </header>
 <main>
   <section id="journeyView">
-    <div class="head"><div><h1>Customer lookup journey</h1><p>Business flow and its branches. Select any node or outcome to inspect the corresponding screen state.</p></div><span class="tag">Source-confirmed · not runtime-tested</span></div>
+    <div class="head"><div><h1>Customer lookup · unified application map</h1><p>Follow the journey, then select any node or outcome to update the related screen detail below. One page for product, analysis, engineering, and architecture review.</p></div><span class="tag">Source-confirmed · not runtime-tested</span></div>
     <div class="intro"><strong>Business intent · interpretation to validate with the PO/BA</strong><p>Help an operator locate a customer record, inspect it, and optionally update the name or email. The sample proves the UI behaviour only; it does not define the business policy for customer maintenance.</p></div>
     <div class="flow">
       <div class="flow-row">
@@ -57,8 +54,8 @@
     <p class="note">Selecting a screen or branch opens its detail in the Screens view. Empty search results and a missing customer are modelled as different states: one belongs to Search; the other belongs to Customer Detail.</p>
   </section>
 
-  <section id="screensView" class="hidden">
-    <div class="head"><div><h1>Screen layouts & behaviour</h1><p>Choose a screen state to see its layout, business-facing rule, conditional outcomes, and expandable source trace.</p></div><span class="tag">Schematic layouts · not screenshots</span></div>
+  <section id="screenDetails" class="screen-details">
+    <div class="head"><div><h1>Selected screen/state details</h1><p>This panel updates in place. Start from a journey node above or select a state here; no separate screen or detail view is opened.</p></div><span class="tag">Schematic layouts · not screenshots</span></div>
     <div class="screen-grid">
       <nav class="screen-list" aria-label="Choose screen">
         <button class="choice active" data-screen="SCR-001"><span class="id">SCR-001</span><strong>Customer Search</strong><small>Matching/results state · /customers</small></button>
@@ -103,7 +100,7 @@ const data = {
 };
 const $=id=>document.getElementById(id);
 function esc(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function view(name){$("journeyView").classList.toggle("hidden",name!=="journey");$("screensView").classList.toggle("hidden",name!=="screens");document.querySelectorAll("[data-view]").forEach(b=>b.classList.toggle("active",b.dataset.view===name))}
+function view(name){ /* Single unified page: never switch or hide primary views. */ }
 function traceMarkup(c){
  return '<details class="details"><summary>Implementation trace (developer / architect)</summary><dl class="trace">'+
  '<dt>Source</dt><dd><a href="'+esc(sourceBase+c.source)+'" target="_blank" rel="noopener"><code>'+esc(c.source)+'</code></a></dd>'+
@@ -121,9 +118,8 @@ function screen(id){
  document.querySelectorAll("[data-screen]").forEach(b=>b.classList.toggle("active",b.classList.contains("choice")&&b.dataset.screen===id));
  $("behaviorList").innerHTML=s.controls.map(c=>'<article class="control"><div class="control-head"><span class="control-id">'+esc(c.id)+'</span><h3>'+esc(c.title)+'</h3></div><span class="evidence">SOURCE-CONFIRMED · NOT RUNTIME-TESTED</span><p>'+esc(c.detail)+'</p><div class="rule"><strong>Functional rule / BA acceptance cue</strong>'+esc(c.rule)+'</div><div class="conditions">'+c.conditions.map(k=>'<div class="condition"><strong>'+esc(k.title)+'</strong><p>'+esc(k.text)+'</p><button type="button" data-screen="'+esc(k.target)+'">View '+esc(data[k.target].title)+' ↗</button></div>').join("")+'</div>'+traceMarkup(c)+'</article>').join("");
 }
-document.querySelectorAll("[data-view]").forEach(b=>b.addEventListener("click",()=>view(b.dataset.view)));
 document.addEventListener("click",e=>{const b=e.target.closest("[data-screen]");if(b)screen(b.dataset.screen)});
-view("journey");
+screen("SCR-001");
 </script>
 </body>
 </html>
