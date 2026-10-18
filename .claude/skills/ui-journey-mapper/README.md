@@ -14,6 +14,7 @@ your-repo/
         SKILL.md
         references/
         templates/
+        examples/
 ```
 
 You can also place it in your personal Claude Code skills directory to reuse it across repositories. Check the current Claude Code documentation for the personal skills path in your environment.
@@ -33,6 +34,10 @@ Useful follow-ups:
 - "Try runtime screenshots with the repository's existing browser test setup."
 - "Export each major workflow as SVG and draw.io."
 - "Show visual journeys first; put code references in a collapsible appendix."
+
+## Example
+
+See `examples/` for a fictional React repository, a sample invocation, a screen inventory, an interaction model, a journey SVG, and a coverage report. The example is source-only and is explicitly not marked runtime-observed.
 
 ## Outputs
 
