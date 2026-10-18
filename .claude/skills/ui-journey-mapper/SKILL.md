@@ -168,6 +168,10 @@ Validate JSON, SVG, and XML syntax; ensure diagram nodes refer to known screen I
 5. For very large repositories, map route/navigation entry points first, then trace relevant paths. State scope limits.
 6. Ask a question only when a missing detail blocks safe progress.
 
+## Reference example
+
+Before using this skill in a critical or unfamiliar repository, review `examples/README.md`. It contains a fictional React application, a sample invocation, canonical JSON output, an SVG journey diagram, and a coverage report. Treat these as illustrations of structure and evidence labelling, not as facts to copy into another application. The example has no real backend and is not runtime-verified.
+
 ## Invocation
 `/ui-journey-mapper`
 
