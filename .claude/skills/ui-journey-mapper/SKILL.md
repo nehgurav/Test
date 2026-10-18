@@ -32,11 +32,13 @@ Prioritize visual views and editing-ready artifacts over code explanations. Gene
 5. `screens/screens.json`
 6. `screens/interaction-model.json`
 7. `screens/screenshots/` — real screenshots when runtime is available.
-8. `screens/layouts/` — SVG schematic/layout assets when feasible.
+8. `screens/layouts/SCR-*.svg` — one individual screen-layout SVG for every documented screen or meaningful UI state, when feasible.
 9. `coverage-report.md`
 10. `README.md` — viewing, importing, and regeneration instructions.
 
 If an output cannot be generated, explain why in the coverage report.
+
+**The journey diagram and screen-layout assets are different deliverables.** A journey SVG shows nodes and arrows for navigation/branching; it is not a screen layout. Each `screens/layouts/SCR-*.svg` must depict the UI itself (page structure, header/navigation if present in the source, labels, fields, buttons, lists/tables, notices, dialogs, and visual hierarchy). Never satisfy the screen-layout requirement with a flowchart.
 
 ## Framework strategy: common engine + adapters
 
@@ -141,17 +143,21 @@ Use `references/data-model.md`. Keep IDs stable between runs. Store evidence and
 - Export SVG and draw.io XML.
 
 #### View B — Screen gallery/detail
-- Use actual screenshots when available.
+- Prefer an actual browser screenshot for the running UI when safe runtime access is available; capture each relevant screen and important state at a documented viewport.
+- Also generate one individual screen-layout asset per documented screen/state. Keep these assets in `screens/layouts/SCR-*.svg` and list them in `screens.json`.
+- A screen-layout SVG must depict the UI itself, not navigation arrows or screen-node boxes. Include the visible page/content regions, controls, labels, table/list rows, dialogs, empty/error states, and relative positioning supported by the source.
+- Reuse actual CSS, design tokens, component libraries, and design-system styles when available. If styles are missing or runtime cannot be accessed, create a source-reconstructed wireframe based on JSX/templates/DOM structure, mark `layoutStatus: source-reconstructed`, and state that styling/dimensions are schematic. Do not claim pixel accuracy.
+- The HTML portal should display a screen preview and offer a link to that screen's separate SVG layout asset; navigation to the journey view must be clearly distinct.
 - Each detail includes purpose, route, entry points, screenshot/layout, numbered controls, transitions, branches, evidence, and related journeys.
-- If there is no screenshot, generate a clearly labelled schematic based on source evidence; do not present it as an actual screenshot.
 - Keep code details out of the primary view.
 
 #### View C — Click-by-click interaction detail
 For each control show label/type, starting screen, action, state/API behaviour if traceable, resulting screen/state, branches, evidence status, and optional source refs.
 
 ### 7. UX exports
-- Generate editable SVG diagrams/layouts with meaningful labels and groups.
-- Generate valid `.drawio` XML with editable nodes and connectors.
+- Generate two different visual asset families: (1) journey/flow diagrams under `journeys/` and (2) per-screen UI layouts under `screens/layouts/`.
+- Screen-layout SVGs should have a screen-shaped artboard with the actual visible UI structure and controls; do not draw a journey flow in these files.
+- Generate valid `.drawio` XML for journey diagrams with editable nodes and connectors.
 - Use an authorized/configured Figma MCP/API integration only if one is actually available.
 - Without Figma integration, provide SVG and draw.io exports plus import instructions.
 - A screenshot is a reference image, not an editable UI layer.
