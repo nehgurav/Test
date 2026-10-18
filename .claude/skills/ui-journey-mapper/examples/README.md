@@ -11,13 +11,11 @@ This directory contains a fictional React application and illustrative source-an
 - `expected-output/screens/screens.json`: inventory of five route-level screens and meaningful UI states.
 - `expected-output/screens/interaction-model.json`: six stable control/action IDs, outcomes, branches, source references, and shared-start-state metadata where needed.
 - `expected-output/journeys/customer-search-to-detail.svg`: standalone portable workflow export; separate asset, not a second portal view.
-- `expected-output/architecture/data-flow.svg`: source-confirmed component/data-flow map, with absent production architecture components called out.
-- `expected-output/technical-appendix.md`: PO/BA review prompts, developer acceptance scenarios, source mapping, architecture gaps, and evidence boundaries.
 - `expected-output/coverage-report.md`: coverage counts, validation status, and limitations.
 
 ## Open the example portal
 
-Open `expected-output/index.html`. The journey map and selected screen detail are presented on the same page. Select any journey node/outcome or the inline screen selector; the screen layout, business-rule/acceptance cue, outcomes, evidence status, and expandable implementation trace update in place. The same page links to the technical appendix for deeper analysis.
+Open `expected-output/index.html`. The journey map and selected screen detail are presented on the same page. Select any journey node/outcome or the inline screen selector; the screen layout, business-rule/acceptance cue, outcomes, evidence status, and expandable implementation trace update in place. Expand the **Technical architecture & stakeholder checks** section on the same page for component/data flow, source mapping, PO/BA questions, developer acceptance scenarios, and architecture gaps. No standalone architecture folder or appendix file is needed by default.
 
 ## How to read the evidence
 
@@ -29,4 +27,4 @@ Open `expected-output/index.html`. The journey map and selected screen detail ar
 
 ## Limitations and safety
 
-All names and emails are fictional. The mock service uses an in-memory array and makes no network requests. No browser execution was performed; no runtime screenshot or runtime-observed transition is claimed. JSX has no CSS, so layouts use schematic styling and do not claim pixel accuracy. There is no backend/API/database/auth/audit/deployment architecture implemented in the sample; the technical appendix marks these as gaps rather than guessing.
+All names and emails are fictional. The mock service uses an in-memory array and makes no network requests. No browser execution was performed; no runtime screenshot or runtime-observed transition is claimed. JSX has no CSS, so layouts use schematic styling and do not claim pixel accuracy. There is no backend/API/database/auth/audit/deployment architecture implemented in the sample; the collapsible technical section on the same page marks these as gaps rather than guessing.
