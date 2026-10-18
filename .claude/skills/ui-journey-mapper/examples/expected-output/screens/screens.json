@@ -13,7 +13,7 @@
       "name": "Customer Search",
       "route": "/customers",
       "routePattern": "/customers",
-      "purpose": "Search customers by name or email and open a customer record.",
+      "purpose": "Search by name or email; the matching-results and no-results views are distinct states on /customers.",
       "layout": "main",
       "entryPoints": [
         "/"
@@ -129,6 +129,37 @@
         "ACT-004",
         "ACT-005"
       ]
+    },
+    {
+      "id": "SCR-005",
+      "name": "Customer Search — No Results State",
+      "route": "/customers",
+      "routePattern": "/customers",
+      "purpose": "Show a no-results status while retaining the search form so the user can amend the query.",
+      "layout": "main",
+      "entryPoints": [
+        "SCR-001 Search action when zero customers match"
+      ],
+      "screenshot": null,
+      "layoutAsset": "screens/layouts/SCR-005.svg",
+      "runtimeStatus": "not-visited",
+      "evidenceStatus": "source-confirmed",
+      "sourceRefs": [
+        {
+          "file": "src/pages/CustomerSearch.jsx",
+          "lines": "1-54"
+        },
+        {
+          "file": "src/services/customers.js",
+          "lines": "1-16"
+        }
+      ],
+      "graphRefs": [],
+      "controlIds": [
+        "ACT-001"
+      ],
+      "layoutStatus": "source-reconstructed",
+      "stateNotes": "This is a meaningful visual state on the same /customers route, not a separate route. The search input and button remain available."
     }
   ],
   "notes": [
@@ -136,6 +167,8 @@
     "SCR-004 is the edit form state on the same detail route, opened by the Edit control.",
     "The SVG layout assets are reconstructed from JSX structure with schematic styling because the sample source does not include CSS. They are not browser screenshots.",
     "The HTML example contains simulated interactions and an illustrative styling system; its shell is not claimed to originate from the sample React source.",
-    "The expected output is illustrative and has not been runtime-verified."
+    "The expected output is illustrative and has not been runtime-verified.",
+    "SCR-005 is the no-results variant of Customer Search on the same /customers route; it keeps the form available for another query.",
+    "Business-intent and acceptance cues in index.html are analyst interpretations intended for PO/BA validation; they are not claimed to be sourced requirements."
   ]
 }
