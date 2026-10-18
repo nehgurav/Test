@@ -38,7 +38,7 @@ Do not use a journey diagram as a substitute for a screen layout. Do not label a
 - Match the numbered list to the relevant screenshot/layout.
 - Describe destination/state and branches in plain language.
 - Show evidence status next to each transition.
-- Keep code references in a collapsible technical appendix.
+- Keep code references, source-to-data flow, PO/BA review prompts, developer acceptance checks, and architecture gaps in a collapsible **Technical architecture & stakeholder checks** section on the same HTML page. Do not create a separate architecture folder or technical appendix by default; create separate files only when explicitly requested.
 
 ## Export assets
 
