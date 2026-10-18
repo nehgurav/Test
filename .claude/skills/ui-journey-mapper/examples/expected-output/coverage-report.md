@@ -20,7 +20,6 @@
 - Journey flow exports: 1 illustrative SVG
 - Individual screen/state layout assets: 5 source-reconstructed SVGs
 - Unified interactive portal pages: 1 (`index.html`; no top-level tabs/views)
-- Stakeholder technical appendix: 1 Markdown document
 
 ## Outputs in this example
 
@@ -30,8 +29,8 @@
 - [x] Screen inventory JSON
 - [x] Interaction model JSON with shared starting states for repeated controls
 - [x] Journey flow SVG
-- [x] Source-based component/data-flow SVG
-- [x] PO/BA review prompts, developer acceptance scenarios, and architect gap list
+- [x] Source-to-data-flow summary and architecture gaps embedded in the unified HTML page
+- [x] PO/BA review prompts, developer acceptance scenarios, and architect gap list embedded in the unified HTML page
 - [x] Coverage report
 - [ ] Runtime browser screenshots
 - [ ] Runtime-observed transitions
@@ -48,7 +47,7 @@ The behaviours are labelled source-confirmed because the included source code im
 - Save updates in-memory data only; persistence across reloads is not implemented.
 - This folder is an instructional reference, not a production-ready UI application.
 - No runtime screenshots are included. The HTML portal and five screen-layout SVGs are source-reconstructed mockups; sample JSX has no CSS, so visual styling/dimensions are schematic. The separate journey SVG is a workflow export, not a screenshot or screen layout.
-- The architecture appendix deliberately calls out the lack of an API, database, auth, audit, and deployment model in the sample; these must not be inferred for a real target without further evidence.
+- The unified page’s collapsible technical section calls out the lack of an API, database, auth, audit, and deployment model in the sample; these must not be inferred for a real target without further evidence. No standalone architecture/ directory or technical-appendix.md is part of the default output.
 
 ## Safety review
 
