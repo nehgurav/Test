@@ -25,6 +25,7 @@ Prioritize a small, usable visual portal over a crowded dashboard. Generate outp
    - **Journeys** (default): show how a user moves between screens, actions on transitions, and conditional branches. Every screen/state node must be clickable and open that item in the Screens view. Branch outcome links must also navigate to the relevant screen/state.
    - **Screens**: a simple screen selector, the actual screenshot or individual reconstructed screen-layout asset, and concise details of controls and conditional behaviour for the selected screen.
 2. `journeys/application-overview.svg` and `journeys/application-overview.drawio`.
+3. `technical-appendix.md` when requested or when a useful implementation/data-flow trace can be established; link to it from Screens rather than adding a third primary view.
 3. `journeys/individual-journeys/` for workflow-specific flow diagrams.
 4. `screens/screens.json` and `screens/interaction-model.json`.
 5. `screens/screenshots/` for real browser captures when runtime is available.
@@ -111,6 +112,8 @@ Discover candidate screens from route configuration, page/view components, navig
 Trace:
 `visible control -> handler -> state/action -> API/service (if any) -> visible outcome -> destination/state`.
 
+If the same semantic control appears in more than one screen/state (for example, a shared “Back to search” link), keep a stable action ID and record all applicable starting states via `screenIds` or explicit transition edges. Do not make a shared action appear to belong to only one state. Keep distinct states such as search results and search-empty meaningful even when they share a URL; do not create a fictitious route solely to distinguish a UI state.
+
 Cover buttons, links, menus, row actions, tabs, form submission, filters, pagination, expand/collapse, dialogs, and keyboard actions when identifiable. Record validation, loading, success, empty and error branches when implemented.
 
 Do not equate an initiated API request with a successful response or visible outcome.
@@ -146,7 +149,9 @@ Use `references/data-model.md`. Keep IDs stable between runs. Store evidence and
 - Reuse actual CSS, design tokens, component libraries, and design-system styles when available. If styles are missing or runtime cannot be accessed, create a source-reconstructed wireframe based on JSX/templates/DOM structure, mark `layoutStatus: source-reconstructed`, and state that styling/dimensions are schematic. Do not claim pixel accuracy.
 - The HTML Screens view should display the selected screen preview and its controls/conditional outcomes, with a link to the separate SVG layout asset. Keep Journeys and Screens as the only primary views; transitions from the Journey view must open the matching screen details.
 - Each detail includes purpose, route, entry points, screenshot/layout, numbered controls, transitions, branches, evidence, and related journeys.
-- Keep code details out of the primary view.
+- Keep code details out of the primary view. Show a compact business-intent / functional-rule cue for PO/BA review only when it is grounded; label interpretation as inferred and clearly separate it from source-confirmed behaviour.
+- Put handler, source reference, service/data path, API boundary, transition type, and evidence in a progressively disclosed per-control trace (for example, a collapsed details section). Do not invent a backend API or architecture layer that is not evidenced.
+- When a developer/architect trace is useful, link a concise technical appendix from the Screens view. State what is present, what is absent from the inspected repository, and what remains unknown; do not treat missing evidence as proof the target system lacks a capability.
 
 #### View C — Click-by-click interaction detail
 For each control show label/type, starting screen, action, state/API behaviour if traceable, resulting screen/state, branches, evidence status, and optional source refs.
