@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1120" height="650" viewBox="0 0 1120 650" role="img" aria-labelledby="title desc">
   <title id="title">Fictional customer search journey</title>
-  <desc id="desc">Search customers, open a result, view customer detail, and optionally edit, save, or cancel. Source-confirmed only; not runtime-tested.</desc>
+  <desc id="desc">Search customers, distinguish matching results from the no-results state, open a result, view customer detail, handle unknown IDs, and optionally edit, save, or cancel. Source-confirmed only; not runtime-tested.</desc>
   <defs>
     <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
       <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
@@ -32,12 +32,12 @@
   <text x="440" y="180" text-anchor="middle" class="small">source logic</text>
 
   <rect class="state" x="575" y="95" width="225" height="85"/>
-  <text x="687" y="125" text-anchor="middle" class="label">Results state</text>
+  <text x="687" y="125" text-anchor="middle" class="label">SCR-001 · Results state</text>
   <text x="687" y="147" text-anchor="middle" class="small">Customer links shown</text>
 
   <rect class="state" x="575" y="215" width="225" height="85"/>
-  <text x="687" y="245" text-anchor="middle" class="label">No-results state</text>
-  <text x="687" y="267" text-anchor="middle" class="small">“No customers found.”</text>
+  <text x="687" y="245" text-anchor="middle" class="label">SCR-005 · No-results state</text>
+  <text x="687" y="267" text-anchor="middle" class="small">Same /customers route; form remains</text>
 
   <rect class="node" x="845" y="95" width="225" height="105"/>
   <text x="957" y="124" text-anchor="middle" class="label">SCR-002 · Customer Detail</text>
@@ -68,6 +68,8 @@
   <path class="edge" d="M520 155 L550 137 L573 137"/>
   <text x="534" y="120" class="small">Yes</text>
   <path class="edge" d="M440 204 L440 257 L573 257"/>
+  <path class="edge dashed" d="M575 285 L535 330 L315 330 L315 225"/>
+  <text x="380" y="323" class="small">Search again</text>
   <text x="456" y="238" class="small">No</text>
   <path class="edge" d="M800 137 L843 137"/>
   <text x="802" y="121" class="small">Click result</text>
