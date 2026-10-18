@@ -1,40 +1,55 @@
 # Example coverage report
 
 ## Summary
+
 - Application: Fictional Customer Admin
 - Framework and adapter: React + React Router
-- Repository scope: skill example only
+- Repository scope: illustrative skill example only
 - Graph input: none
 - Runtime exploration: unavailable / not performed
+- Business context: analyst interpretation only; no approved requirements or domain documentation supplied
 
 ## Coverage
+
 - Route patterns identified: 2 application routes plus root redirect
-- Screen/state records documented: 3
+- Screen/state records documented: 5 (including search results-empty state on the same `/customers` route)
 - Screens runtime-visited: 0
-- Controls/actions documented: 6
+- Unique controls/actions documented: 6 stable action IDs
+- Action transitions documented: 9
 - Controls runtime-tested: 0
-- Journeys generated: 1 illustrative SVG
+- Journey flow exports: 1 illustrative SVG
+- Individual screen/state layout assets: 5 source-reconstructed SVGs
+- Unified interactive portal pages: 1 (`index.html`; no top-level tabs/views)
+- Stakeholder technical appendix: 1 Markdown document
 
 ## Outputs in this example
-- [x] Simple two-view HTML portal (Journeys ↔ Screens), with clickable flow nodes
-- [x] Four individual screen-layout SVG assets, separate from the journey flow SVG
+
+- [x] One unified HTML page with the journey map and inline selected screen/state details
+- [x] Clickable journey nodes/outcomes update the detail section on the same page
+- [x] Five individual screen-layout SVG assets, separate from the journey flow SVG
 - [x] Screen inventory JSON
-- [x] Interaction model JSON
-- [x] Separate journey flow SVG plus four per-screen layout SVGs
+- [x] Interaction model JSON with shared starting states for repeated controls
+- [x] Journey flow SVG
+- [x] Source-based component/data-flow SVG
+- [x] PO/BA review prompts, developer acceptance scenarios, and architect gap list
 - [x] Coverage report
-- [ ] Full generated portal for a target app (this folder contains a small illustrative HTML gallery only)
-- [ ] Application overview draw.io
-- [ ] Screenshots from a running browser
+- [ ] Runtime browser screenshots
 - [ ] Runtime-observed transitions
+- [ ] Target-application output (this is a fictional example only)
+- [ ] Figma-native frames or a validated draw.io application overview
 
 ## Evidence quality
-The behaviours are labelled source-confirmed because the included source code implements them. Nothing is marked runtime-observed because the sample was not executed in a browser. The unknown-customer branch is a state on /customers/:customerId, not a separate URL.
+
+The behaviours are labelled source-confirmed because the included source code implements them. Nothing is marked runtime-observed because the sample was not executed in a browser. `SCR-005` is the no-results state on `/customers`, while `SCR-003` is the not-found state on `/customers/:customerId`. A business-intent cue is labelled inferred and must be validated by a PO/BA.
 
 ## Limitations
-- customers.js is an in-memory mock, not a real service or API.
+
+- `customers.js` is an in-memory mock, not a real service or API.
 - Save updates in-memory data only; persistence across reloads is not implemented.
 - This folder is an instructional reference, not a production-ready UI application.
-- No runtime screenshots are included. The HTML gallery and four screen-layout SVGs are source-reconstructed mockups; sample JSX has no CSS, so visual styling/dimensions are schematic. The separate journey SVG is a flow diagram only.
+- No runtime screenshots are included. The HTML portal and five screen-layout SVGs are source-reconstructed mockups; sample JSX has no CSS, so visual styling/dimensions are schematic. The separate journey SVG is a workflow export, not a screenshot or screen layout.
+- The architecture appendix deliberately calls out the lack of an API, database, auth, audit, and deployment model in the sample; these must not be inferred for a real target without further evidence.
 
 ## Safety review
-All data is synthetic, with reserved .test email addresses. No credentials or production data are present.
+
+All data is synthetic, with reserved `.test` email addresses. No credentials or production data are present.
