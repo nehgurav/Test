@@ -16,11 +16,12 @@
 - Journeys generated: 1 illustrative SVG
 
 ## Outputs in this example
+- [x] Interactive HTML screen gallery with reconstructed layouts
 - [x] Screen inventory JSON
 - [x] Interaction model JSON
 - [x] One illustrative journey SVG
 - [x] Coverage report
-- [ ] HTML visual portal
+- [ ] Full generated portal for a target app (this folder contains a small illustrative HTML gallery only)
 - [ ] Application overview draw.io
 - [ ] Screenshots from a running browser
 - [ ] Runtime-observed transitions
@@ -32,7 +33,7 @@ The behaviours are labelled source-confirmed because the included source code im
 - customers.js is an in-memory mock, not a real service or API.
 - Save updates in-memory data only; persistence across reloads is not implemented.
 - This folder is an instructional reference, not a production-ready UI application.
-- Sample screenshots/layout assets are omitted rather than fabricated.
+- No runtime screenshots are included; index.html uses explicit reconstructed HTML/CSS layouts, not fabricated screenshots.
 
 ## Safety review
 All data is synthetic, with reserved .test email addresses. No credentials or production data are present.
