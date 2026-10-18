@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+<title id="title">SCR-001 Customer Search — screen layout</title>
+<desc id="desc">Source-reconstructed screen layout. Shows a Customer search heading, a name or email input, Search button, and two customer result links. The sample source has no CSS, so the visual styling is schematic and is not a browser screenshot.</desc>
+<defs><style>
+.bg{fill:#f5f7fa}.paper{fill:#fff;stroke:#d9e0e8;stroke-width:1.5}.ink{fill:#17212f}.muted{fill:#617085}.line{stroke:#e1e6ed;stroke-width:1.4}.field{fill:#fff;stroke:#c8d2df;stroke-width:1.5}.primary{fill:#315ee7}.white{fill:#fff}.row{fill:#fff;stroke:#e0e6ed;stroke-width:1.2}.soft{fill:#edf2ff}.font{font-family:Arial,Helvetica,sans-serif}
+</style></defs>
+<rect class="bg" width="1280" height="820"/>
+<rect class="paper" x="72" y="54" width="1136" height="710" rx="12"/>
+<text class="font ink" x="120" y="125" font-size="33" font-weight="700">Customer search</text>
+<text class="font muted" x="120" y="160" font-size="17">Find a customer by name or email.</text>
+<text class="font ink" x="120" y="218" font-size="16" font-weight="700">Name or email</text>
+<rect class="field" x="120" y="234" width="760" height="52" rx="7"/>
+<text class="font muted" x="139" y="266" font-size="16">Search customers</text>
+<rect class="primary" x="896" y="234" width="142" height="52" rx="7"/>
+<text class="font white" x="967" y="266" text-anchor="middle" font-size="16" font-weight="700">Search</text>
+<text class="font muted" x="120" y="337" font-size="14">Customer results</text>
+<rect class="row" x="120" y="358" width="1018" height="86" rx="8"/>
+<circle cx="164" cy="401" r="23" class="soft"/>
+<text class="font" x="164" y="407" font-size="15" fill="#315ee7" text-anchor="middle" font-weight="700">AS</text>
+<text class="font ink" x="205" y="393" font-size="17" font-weight="700">Ava Shah</text>
+<text class="font muted" x="205" y="418" font-size="15">ava@example.test</text>
+<text class="font" x="1105" y="408" font-size="27" fill="#8492a6" text-anchor="middle">›</text>
+<rect class="row" x="120" y="454" width="1018" height="86" rx="8"/>
+<circle cx="164" cy="497" r="23" fill="#eaf7f1"/>
+<text class="font" x="164" y="503" font-size="15" fill="#117a58" text-anchor="middle" font-weight="700">NR</text>
+<text class="font ink" x="205" y="489" font-size="17" font-weight="700">Noah Reed</text>
+<text class="font muted" x="205" y="514" font-size="15">noah@example.test</text>
+<text class="font" x="1105" y="504" font-size="27" fill="#8492a6" text-anchor="middle">›</text>
+<text class="font muted" x="120" y="710" font-size="13">Illustrative layout from JSX structure · not runtime-captured · visual styling is schematic</text>
+</svg>

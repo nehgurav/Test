@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+<title id="title">SCR-004 Edit Customer — screen layout</title>
+<desc id="desc">Source-reconstructed edit form state with name and email inputs, Save changes and Cancel controls. The visual style is schematic, not a browser screenshot.</desc>
+<defs><style>.bg{fill:#f5f7fa}.paper{fill:#fff;stroke:#d9e0e8;stroke-width:1.5}.ink{fill:#17212f}.muted{fill:#617085}.field{fill:#fff;stroke:#c8d2df;stroke-width:1.5}.line{stroke:#e1e6ed;stroke-width:1.2}.primary{fill:#315ee7}.white{fill:#fff}.font{font-family:Arial,Helvetica,sans-serif}</style></defs>
+<rect class="bg" width="1280" height="820"/>
+<rect class="paper" x="72" y="54" width="1136" height="710" rx="12"/>
+<text class="font" x="120" y="112" font-size="16" fill="#315ee7" font-weight="700">‹  Back to search</text>
+<text class="font ink" x="120" y="178" font-size="33" font-weight="700">Edit customer</text>
+<text class="font muted" x="120" y="211" font-size="16">Update customer details.</text>
+<text class="font ink" x="120" y="274" font-size="15" font-weight="700">Name</text>
+<rect class="field" x="120" y="290" width="920" height="52" rx="7"/>
+<text class="font ink" x="140" y="322" font-size="16">Ava Shah</text>
+<text class="font ink" x="120" y="384" font-size="15" font-weight="700">Email</text>
+<rect class="field" x="120" y="400" width="920" height="52" rx="7"/>
+<text class="font ink" x="140" y="432" font-size="16">ava@example.test</text>
+<rect class="primary" x="120" y="486" width="175" height="50" rx="7"/>
+<text class="font white" x="207" y="517" text-anchor="middle" font-size="15" font-weight="700">Save changes</text>
+<rect x="309" y="486" width="120" height="50" rx="7" fill="#fff" stroke="#c8d2df" stroke-width="1.5"/>
+<text class="font ink" x="369" y="517" text-anchor="middle" font-size="15" font-weight="700">Cancel</text>
+<text class="font muted" x="120" y="710" font-size="13">Illustrative layout from JSX structure · not runtime-captured · styling is schematic</text>
+</svg>

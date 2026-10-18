@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+<title id="title">SCR-005 Customer Search — No Results state</title>
+<desc id="desc">Source-reconstructed empty-results state on the same /customers route as Customer Search. The search input and Search button remain visible and an explicit no-results status appears below them. Schematic styling, not a browser screenshot.</desc>
+<defs><style>
+.bg{fill:#f5f7fa}.paper{fill:#fff;stroke:#d9e0e8;stroke-width:1.5}.ink{fill:#17212f}.muted{fill:#617085}.line{stroke:#e1e6ed;stroke-width:1.4}.field{fill:#fff;stroke:#c8d2df;stroke-width:1.5}.primary{fill:#315ee7}.white{fill:#fff}.font{font-family:Arial,Helvetica,sans-serif}.soft{fill:#fff7e8;stroke:#e7d5a7;stroke-width:1.5}
+</style></defs>
+<rect class="bg" width="1280" height="820"/>
+<rect class="paper" x="72" y="54" width="1136" height="710" rx="12"/>
+<text class="font ink" x="120" y="125" font-size="33" font-weight="700">Customer search</text>
+<text class="font muted" x="120" y="160" font-size="17">Find a customer by name or email.</text>
+<text class="font ink" x="120" y="218" font-size="16" font-weight="700">Name or email</text>
+<rect class="field" x="120" y="234" width="760" height="52" rx="7"/>
+<text class="font ink" x="139" y="266" font-size="16">unmatched-query</text>
+<rect class="primary" x="896" y="234" width="142" height="52" rx="7"/>
+<text class="font white" x="967" y="266" text-anchor="middle" font-size="16" font-weight="700">Search</text>
+<rect class="soft" x="120" y="331" width="1018" height="126" rx="9"/>
+<circle cx="172" cy="392" r="25" fill="#f7e7bf"/>
+<text class="font" x="172" y="400" text-anchor="middle" font-size="24" fill="#845400" font-weight="700">!</text>
+<text class="font ink" x="216" y="378" font-size="19" font-weight="700">No customers found</text>
+<text class="font muted" x="216" y="408" font-size="16">Try another name or email, then select Search again.</text>
+<text class="font muted" x="120" y="710" font-size="13">SCR-005 · Same /customers route as SCR-001 · source-reconstructed, not runtime-captured</text>
+</svg>

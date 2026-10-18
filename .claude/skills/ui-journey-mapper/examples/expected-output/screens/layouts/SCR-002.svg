@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="820" viewBox="0 0 1280 820" role="img" aria-labelledby="title desc">
+<title id="title">SCR-002 Customer Detail — screen layout</title>
+<desc id="desc">Source-reconstructed customer detail state. Shows Back to search, Customer detail heading, name and email values, and Edit button. Styling is schematic, not a browser screenshot.</desc>
+<defs><style>
+.bg{fill:#f5f7fa}.paper{fill:#fff;stroke:#d9e0e8;stroke-width:1.5}.ink{fill:#17212f}.muted{fill:#617085}.line{stroke:#e1e6ed;stroke-width:1.4}.field{fill:#fff;stroke:#dce3eb;stroke-width:1.2}.primary{fill:#315ee7}.white{fill:#fff}.soft{fill:#edf2ff}.font{font-family:Arial,Helvetica,sans-serif}
+</style></defs>
+<rect class="bg" width="1280" height="820"/>
+<rect class="paper" x="72" y="54" width="1136" height="710" rx="12"/>
+<text class="font" x="120" y="112" font-size="16" fill="#315ee7" font-weight="700">‹  Back to search</text>
+<rect class="primary" x="1000" y="82" width="140" height="48" rx="7"/>
+<text class="font white" x="1070" y="112" font-size="15" text-anchor="middle" font-weight="700">Edit</text>
+<text class="font ink" x="120" y="178" font-size="33" font-weight="700">Customer detail</text>
+<circle cx="160" cy="252" r="32" class="soft"/>
+<text class="font" x="160" y="259" text-anchor="middle" font-size="19" fill="#315ee7" font-weight="700">AS</text>
+<text class="font ink" x="212" y="248" font-size="21" font-weight="700">Ava Shah</text>
+<text class="font muted" x="212" y="274" font-size="15">Customer record · c-101</text>
+<text class="font ink" x="120" y="342" font-size="17" font-weight="700">Personal information</text>
+<rect class="field" x="120" y="364" width="480" height="92" rx="8"/>
+<text class="font muted" x="145" y="393" font-size="14">Name</text>
+<text class="font ink" x="145" y="426" font-size="17" font-weight="700">Ava Shah</text>
+<rect class="field" x="620" y="364" width="520" height="92" rx="8"/>
+<text class="font muted" x="645" y="393" font-size="14">Email</text>
+<text class="font ink" x="645" y="426" font-size="17" font-weight="700">ava@example.test</text>
+<text class="font ink" x="120" y="514" font-size="17" font-weight="700">Relationship</text>
+<rect class="field" x="120" y="536" width="1020" height="80" rx="8"/>
+<text class="font muted" x="145" y="565" font-size="14">Customer ID</text>
+<text class="font ink" x="145" y="594" font-size="16" font-weight="700">c-101</text>
+<text class="font muted" x="120" y="710" font-size="13">Illustrative layout from JSX structure · not runtime-captured · styling is schematic</text>
+</svg>

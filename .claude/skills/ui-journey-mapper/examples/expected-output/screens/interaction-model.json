@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0",
+  "actions": [
+    {
+      "id": "ACT-001",
+      "screenId": "SCR-001",
+      "label": "Search",
+      "controlType": "form submit button",
+      "action": "Submit the name/email query and update the displayed result list.",
+      "handlerRef": {
+        "file": "src/pages/CustomerSearch.jsx",
+        "symbol": "handleSearch"
+      },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "one or more customers match",
+          "targetScreenId": "SCR-001",
+          "targetState": "matching result links displayed",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        },
+        {
+          "condition": "no customers match",
+          "targetScreenId": "SCR-005",
+          "targetState": "No-results status displayed on /customers; search form remains available",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "Client-side filtering only; no network request is made. ACT-001 is available in both SCR-001 and SCR-005 because the search form remains visible in the empty state.",
+      "screenIds": [
+        "SCR-001",
+        "SCR-005"
+      ]
+    },
+    {
+      "id": "ACT-002",
+      "screenId": "SCR-001",
+      "label": "Customer result link",
+      "controlType": "link",
+      "action": "Navigate to the selected customer's detail route.",
+      "handlerRef": {
+        "file": "src/pages/CustomerSearch.jsx",
+        "symbol": "Link to /customers/:customerId"
+      },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "user activates a customer result",
+          "targetScreenId": "SCR-002",
+          "targetState": "customer detail rendered for a known ID",
+          "transitionType": "route-navigation",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "Unknown IDs render SCR-003 on the same route pattern."
+    },
+    {
+      "id": "ACT-003",
+      "screenId": "SCR-002",
+      "label": "Edit",
+      "controlType": "button",
+      "action": "Copy current customer fields to the draft and display the edit form.",
+      "handlerRef": {
+        "file": "src/pages/CustomerDetail.jsx",
+        "symbol": "startEditing"
+      },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "Edit activated",
+          "targetScreenId": "SCR-004",
+          "targetState": "edit form visible",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "In-place state change; not route navigation."
+    },
+    {
+      "id": "ACT-004",
+      "screenId": "SCR-004",
+      "label": "Save changes",
+      "controlType": "form submit button",
+      "action": "Apply browser required/email validation and update the in-memory demo store.",
+      "handlerRef": {
+        "file": "src/pages/CustomerDetail.jsx",
+        "symbol": "saveChanges"
+      },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "browser validation succeeds and customer ID exists",
+          "targetScreenId": "SCR-002",
+          "targetState": "updated values displayed with a Changes saved status",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        },
+        {
+          "condition": "required name is empty or email format is invalid",
+          "targetScreenId": "SCR-004",
+          "targetState": "edit form remains visible and browser-native form validation blocks submission",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        },
+        {
+          "condition": "customer ID is missing from the in-memory store at submit time",
+          "targetScreenId": "SCR-004",
+          "targetState": "edit form remains visible with an update-failure status message",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "No backend API or persistence across reloads is implemented. The defensive missing-ID branch is documented in source; this sample exposes no delete control that would normally trigger it."
+    },
+    {
+      "id": "ACT-005",
+      "screenId": "SCR-004",
+      "label": "Cancel",
+      "controlType": "button",
+      "action": "Discard the draft and leave edit mode.",
+      "handlerRef": {
+        "file": "src/pages/CustomerDetail.jsx",
+        "symbol": "cancelEditing"
+      },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "Cancel activated",
+          "targetScreenId": "SCR-002",
+          "targetState": "detail view restored from current customer data",
+          "transitionType": "state-change",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "In-place interaction returning from the edit state to the detail state."
+    },
+    {
+      "id": "ACT-006",
+      "screenId": "SCR-002",
+      "label": "Back to search",
+      "controlType": "link",
+      "action": "Navigate back to /customers.",
+      "handlerRef": {
+        "file": "src/pages/CustomerDetail.jsx",
+        "symbol": "Link to /customers"
+      },
+      "graphRefs": [],
+      "apiRefs": [],
+      "transitions": [
+        {
+          "condition": "link activated from successful detail or not-found state",
+          "targetScreenId": "SCR-001",
+          "targetState": "customer search screen",
+          "transitionType": "route-navigation",
+          "evidenceStatus": "source-confirmed"
+        }
+      ],
+      "evidenceStatus": "source-confirmed",
+      "notes": "The same link is rendered in both the successful detail and not-found branches. screenIds records both starting states; screenId remains the primary/legacy state.",
+      "screenIds": [
+        "SCR-002",
+        "SCR-003"
+      ]
+    }
+  ],
+  "notes": [
+    "screenIds is an additive extension used when the same control appears in more than one starting screen/state; screenId remains the primary ID for compatibility.",
+    "SCR-005 represents the no-results state on /customers; it is not a new route.",
+    "apiRefs is empty throughout this sample because the source uses an in-memory mock service and no backend API."
+  ]
+}
